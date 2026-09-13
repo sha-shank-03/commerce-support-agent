@@ -2,14 +2,14 @@
   "version": 1,
   "scenario": "delay",
   "label": "A shipment taking the scenic route",
-  "recordedAt": "2026-09-13T13:20:23.038419185Z",
-  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
+  "recordedAt": "2026-09-13T14:22:26.229589702Z",
+  "commit": "2b9fc8b3747aa184bb0c9b86e3fb3fbc7a8c667f",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T13:20:23.038419185Z",
+        "at": "2026-09-13T14:22:26.229589702Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -17,7 +17,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:20:24.660870466Z",
+        "at": "2026-09-13T14:22:27.520660875Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -25,7 +25,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:20:24.674124793Z",
+        "at": "2026-09-13T14:22:27.548483597Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -33,13 +33,13 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:20:25.440134385Z",
+        "at": "2026-09-13T14:22:28.19118978Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-1",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -49,14 +49,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:20:28.279757502Z",
+        "at": "2026-09-13T14:22:30.591150429Z",
         "call": {
-          "costMicros": 319,
-          "durationMs": 2839,
+          "costMicros": 225,
+          "durationMs": 2399,
           "id": "model-1",
-          "inputTokens": 753,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 832,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -65,7 +65,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:20:28.292158555Z",
+        "at": "2026-09-13T14:22:30.617476782Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -73,7 +73,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:20:28.292160835Z",
+        "at": "2026-09-13T14:22:30.617479352Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -81,13 +81,13 @@
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T13:20:28.307135Z",
+        "at": "2026-09-13T14:22:30.644547384Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-2",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -97,14 +97,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:20:29.268403304Z",
+        "at": "2026-09-13T14:22:31.505611564Z",
         "call": {
-          "costMicros": 361,
-          "durationMs": 961,
+          "costMicros": 254,
+          "durationMs": 861,
           "id": "model-2",
-          "inputTokens": 853,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 12,
+          "inputTokens": 941,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -113,51 +113,99 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:20:29.281902619Z",
+        "at": "2026-09-13T14:22:31.5354445Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 10,
-        "title": "lookup_shipment"
+        "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:20:29.29719166Z",
+        "at": "2026-09-13T14:22:31.535447559Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 11,
+        "title": "get_policies"
+      },
+      {
+        "at": "2026-09-13T14:22:31.571451793Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-3",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
         "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
         "kind": "model",
-        "seq": 11,
+        "seq": 12,
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:20:30.807872608Z",
+        "at": "2026-09-13T14:22:32.564975344Z",
         "call": {
-          "costMicros": 474,
-          "durationMs": 1510,
+          "costMicros": 318,
+          "durationMs": 993,
           "id": "model-3",
-          "inputTokens": 916,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 67,
+          "inputTokens": 1199,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
         "kind": "model",
-        "seq": 12,
+        "seq": 13,
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:20:30.821464573Z",
+        "at": "2026-09-13T14:22:32.595357382Z",
         "call": null,
-        "detail": "The order for the stickers has shipped and is currently in transit. The last scan was at a regional sorting centre, and there is no confirmed delivery date available at this time.",
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 14,
+        "title": "lookup_shipment"
+      },
+      {
+        "at": "2026-09-13T14:22:32.620112565Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-4",
+          "inputTokens": null,
+          "model": "gpt-5.6-luna",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 15,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T14:22:34.565497193Z",
+        "call": {
+          "costMicros": 417,
+          "durationMs": 1945,
+          "id": "model-4",
+          "inputTokens": 1271,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 82,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 16,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T14:22:34.592312579Z",
+        "call": null,
+        "detail": "Your order is shipped and currently in transit. The last scan was at the regional sorting centre, and there is no confirmed delivery date. A delay alone does not authorize a refund, so no action was taken.",
         "kind": "status",
-        "seq": 13,
+        "seq": 17,
         "title": "completed"
       }
     ],
@@ -199,9 +247,9 @@
         "version": "fixture-v1"
       }
     ],
-    "id": "c4ca733a33fc6f8389b899759d8739e28a31289875c62e9f",
-    "inputTokens": 2522,
-    "model": "gpt-4.1-mini",
+    "id": "58ab6d1a21193202d3c4d161acaebcef25161a9e10273131",
+    "inputTokens": 4243,
+    "model": "gpt-5.6-luna",
     "order": {
       "address": "18 Maple St, Sample City",
       "currency": "USD",
@@ -210,12 +258,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 90,
+    "outputTokens": 126,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "completed",
-    "summary": "The order for the stickers has shipped and is currently in transit. The last scan was at a regional sorting centre, and there is no confirmed delivery date available at this time.",
+    "summary": "Your order is shipped and currently in transit. The last scan was at the regional sorting centre, and there is no confirmed delivery date. A delay alone does not authorize a refund, so no action was taken.",
     "ticket": {
       "id": "ticket-delay",
       "message": "My stickers were due yesterday. Can you check where they are?",
@@ -223,8 +271,8 @@
       "scenario": "delay",
       "subject": "A shipment taking the scenic route"
     },
-    "turns": 3,
-    "usedMicros": 1154
+    "turns": 4,
+    "usedMicros": 1214
   },
   "approvalSnapshot": null
 }

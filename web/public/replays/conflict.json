@@ -2,14 +2,14 @@
   "version": 1,
   "scenario": "conflict",
   "label": "Two policies, one careful decision",
-  "recordedAt": "2026-09-13T13:25:30.153514396Z",
-  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
+  "recordedAt": "2026-09-13T14:29:08.99685894Z",
+  "commit": "2b9fc8b3747aa184bb0c9b86e3fb3fbc7a8c667f",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T13:25:30.153514396Z",
+        "at": "2026-09-13T14:29:08.99685894Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -17,7 +17,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:25:31.812169354Z",
+        "at": "2026-09-13T14:29:10.428443145Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -25,7 +25,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:25:31.839184544Z",
+        "at": "2026-09-13T14:29:10.484840804Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -33,13 +33,13 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:25:32.730571766Z",
+        "at": "2026-09-13T14:29:11.214915962Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-1",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -49,14 +49,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:25:34.497528171Z",
+        "at": "2026-09-13T14:29:12.540267052Z",
         "call": {
-          "costMicros": 322,
-          "durationMs": 1766,
+          "costMicros": 227,
+          "durationMs": 1325,
           "id": "model-1",
-          "inputTokens": 759,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 838,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -65,7 +65,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:25:34.527678287Z",
+        "at": "2026-09-13T14:29:12.578071149Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -73,7 +73,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:25:34.527680627Z",
+        "at": "2026-09-13T14:29:12.578073549Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -81,13 +81,13 @@
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T13:25:34.567719476Z",
+        "at": "2026-09-13T14:29:12.626607712Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-2",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -97,14 +97,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:25:35.297514273Z",
+        "at": "2026-09-13T14:29:13.952572034Z",
         "call": {
-          "costMicros": 363,
-          "durationMs": 729,
+          "costMicros": 255,
+          "durationMs": 1325,
           "id": "model-2",
-          "inputTokens": 859,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 12,
+          "inputTokens": 947,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -113,7 +113,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:25:35.323504301Z",
+        "at": "2026-09-13T14:29:14.05796127Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -121,7 +121,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:25:35.323506511Z",
+        "at": "2026-09-13T14:29:14.05796426Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -129,13 +129,13 @@
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T13:25:35.353114071Z",
+        "at": "2026-09-13T14:29:14.126511727Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-3",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -145,14 +145,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:25:36.698505003Z",
+        "at": "2026-09-13T14:29:15.7353885Z",
         "call": {
-          "costMicros": 597,
-          "durationMs": 1345,
+          "costMicros": 404,
+          "durationMs": 1608,
           "id": "model-3",
-          "inputTokens": 1108,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 96,
+          "inputTokens": 1205,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 85,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -161,9 +161,9 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:25:36.751073935Z",
+        "at": "2026-09-13T14:29:15.776455664Z",
         "call": null,
-        "detail": "The order was delivered damaged, which typically allows a refund or replacement per damaged goods policy. However, the promotion states all sales are final, creating a conflict between policies. Per the conflicting policies guidelines, this case requires human review to resolve the conflict before any refund or replacement can be proposed.",
+        "detail": "Escalated for human policy review. The order is verified as damaged, but the final-sale promotion conflicts with the damaged-goods policy. Per the conflict policy, no refund or replacement is proposed until the conflict is resolved.",
         "kind": "status",
         "seq": 14,
         "title": "completed"
@@ -201,9 +201,9 @@
         "version": "v1"
       }
     ],
-    "id": "379dcc42f997299d6520dc66675ebb69fa4a5de922b71e66",
-    "inputTokens": 2726,
-    "model": "gpt-4.1-mini",
+    "id": "35f68042c5f187e03682bbfe5349b3abdb0290081939f5ff",
+    "inputTokens": 2990,
+    "model": "gpt-5.6-luna",
     "order": {
       "address": "18 Maple St, Sample City",
       "currency": "USD",
@@ -212,12 +212,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 119,
+    "outputTokens": 114,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "completed",
-    "summary": "The order was delivered damaged, which typically allows a refund or replacement per damaged goods policy. However, the promotion states all sales are final, creating a conflict between policies. Per the conflicting policies guidelines, this case requires human review to resolve the conflict before any refund or replacement can be proposed.",
+    "summary": "Escalated for human policy review. The order is verified as damaged, but the final-sale promotion conflicts with the damaged-goods policy. Per the conflict policy, no refund or replacement is proposed until the conflict is resolved.",
     "ticket": {
       "id": "ticket-conflict",
       "message": "A promotion says all sales final, but my print arrived damaged. Which policy applies?",
@@ -226,7 +226,7 @@
       "subject": "Two policies, one careful decision"
     },
     "turns": 3,
-    "usedMicros": 1282
+    "usedMicros": 886
   },
   "approvalSnapshot": null
 }

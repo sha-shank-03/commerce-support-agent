@@ -2,7 +2,7 @@
 
 Independent portfolio demonstration by Shashank. Not affiliated with Sticker Mule.
 
-Go owns business rules and authorization; a Python OpenAI agent investigates synthetic customer issues. React/TypeScript presents evidence, approvals and audit receipts. This is a bounded portfolio demonstration, not a real customer-support system.
+Go owns business rules and authorization; a Python OpenAI agent using GPT-5.6 Luna investigates synthetic customer issues. React/TypeScript presents evidence, approvals and audit receipts. This is a bounded portfolio demonstration, not a real customer-support system.
 
 No real payments, messages or customer accounts are connected. Public release is gated on safety tests and real-provider evaluation. No open-source licence has been granted for original project code.
 
@@ -12,7 +12,7 @@ The connected console opens on an interactive system map. Run view exposes synch
 
 ## What to try
 
-- Replay seven genuine OpenAI investigations without a backend or API key.
+- Replay seven genuine GPT-5.6 Luna investigations without a backend or API key.
 - Inspect versioned policy/order evidence, a read-only MCP lookup and an application-owned carrier browser fallback.
 - With an invitation, investigate a damaged order, review the exact refund, approve or reject it, then inspect the simulated receipt.
 - Refresh during approval: the checkpoint is in PostgreSQL, not browser memory.

@@ -6,6 +6,8 @@ import statistics
 source=Path("evals/results/latest.json");report=json.loads(source.read_text())
 if report.get("model")!="gpt-5.6-luna" or report["cases"]!=40 or report["passed"]/40<.9:
     raise SystemExit("Live evaluation gate not met")
+if report.get("actionAuditPassed")!=40 or report.get("actionAuditCases")!=40:
+    raise SystemExit("The complete persisted action-safety audit is required")
 if any(not row.get("checks",{}).get("no_unapproved_receipt",False) for row in report["results"]):
     raise SystemExit("An approval safety invariant did not pass")
 directory=Path("web/public/replays");directory.mkdir(parents=True,exist_ok=True)
@@ -32,6 +34,8 @@ history=[]
 for path in sorted(Path("evals/results").glob("attempt-*.json")):
     earlier=json.loads(path.read_text());history.append({k:v for k,v in earlier.items() if k!="recordings"})
 (docs/"evaluation-history.json").write_text(json.dumps(history,indent=2))
+Path("web/public/verification.json").write_text(json.dumps(public,indent=2))
+Path("web/public/evaluation-history.json").write_text(json.dumps(history,indent=2))
 latencies=[v["seconds"] for v in report["results"]]
 cost=sum(v["costMicros"] for v in report["results"])/1e6
 summary=f"""# Live evaluation report

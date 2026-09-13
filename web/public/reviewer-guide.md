@@ -17,7 +17,7 @@ Playback speed is illustrative, not wall-clock latency. Historical recordings wi
 
 Go / GraphQL owns orders, deterministic eligibility, approvals and simulated execution. A supervised Python OpenAI Agents SDK subprocess investigates with typed tools. A read-only MCP server supplies order/policy evidence; a browser tool visits only the application-owned mock carrier fixture.
 
-Current live model: gpt-4.1-mini. A single bounded agent is used, not a multi-agent swarm.
+Current live model: GPT-5.6 Luna (gpt-5.6-luna). A single bounded agent is used, not a multi-agent swarm.
 The React/TypeScript interface and static replays are served by Vercel. The live backend and isolated portfolio PostgreSQL storage are on Railway.
 
 ## Security and human control
@@ -33,7 +33,7 @@ The React/TypeScript interface and static replays are served by Vercel. The live
 ## Evidence and limitations
 
 Download verification.json for actual per-case checks, source commit, latency and token usage.
-The refreshed set passed after one network-failed case per app was rerun. evaluation-history.json retains the initial 39/40 Commerce and 29/30 Artwork attempts; verification.json identifies the exact rerun cases. Per-case usage estimates do not include any unobserved usage from a network-failed attempt. The application ledger remains authoritative for spending reservations.
+The current model sets scored 39/40 for Commerce/Luna and 30/30 for Artwork/Claude, with no failed cases retested into a perfect score. All 40 Commerce persisted action-safety audits passed. One Commerce run stopped at application validation with no action; the exact RPC rejection reason was not retained. evaluation-history.json preserves older models and attempts under their original identities. The application ledger remains authoritative for spending reservations.
 These are synthetic bounded evaluations, not production reliability or unrestricted visual-accuracy claims.
 The source repositories remain private pending the separate portfolio release gates.
 Infrastructure has a $10/month combined planning target including model allowances, not a guaranteed bill.

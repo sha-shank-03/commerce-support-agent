@@ -30,5 +30,5 @@
       "file": "/replays/injection.json"
     }
   ],
-  "notice": "Recorded real OpenAI executions, never live. No model or backend calls while browsing."
+  "notice": "Recorded real GPT-5.6 Luna executions, never live. No model or backend calls while browsing."
 }

@@ -2,14 +2,14 @@
   "version": 1,
   "scenario": "damage",
   "label": "A damaged delivery",
-  "recordedAt": "2026-09-13T13:21:16.990041905Z",
-  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
+  "recordedAt": "2026-09-13T14:24:38.625813075Z",
+  "commit": "2b9fc8b3747aa184bb0c9b86e3fb3fbc7a8c667f",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T13:21:16.990041905Z",
+        "at": "2026-09-13T14:24:38.625813075Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -17,7 +17,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:21:18.563094906Z",
+        "at": "2026-09-13T14:24:39.965611602Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -25,7 +25,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:21:18.580341282Z",
+        "at": "2026-09-13T14:24:40.01479578Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -33,13 +33,13 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:21:19.423475013Z",
+        "at": "2026-09-13T14:24:40.70378885Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-1",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -49,14 +49,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:20.768290048Z",
+        "at": "2026-09-13T14:24:42.066894186Z",
         "call": {
-          "costMicros": 320,
-          "durationMs": 1344,
+          "costMicros": 226,
+          "durationMs": 1363,
           "id": "model-1",
-          "inputTokens": 755,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 834,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -65,7 +65,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:20.787012622Z",
+        "at": "2026-09-13T14:24:42.095499707Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -73,7 +73,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:21:20.787014952Z",
+        "at": "2026-09-13T14:24:42.095502387Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -81,13 +81,13 @@
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T13:21:20.803813751Z",
+        "at": "2026-09-13T14:24:42.125902483Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-2",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -97,14 +97,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:21.466565564Z",
+        "at": "2026-09-13T14:24:42.747576436Z",
         "call": {
-          "costMicros": 362,
-          "durationMs": 662,
+          "costMicros": 254,
+          "durationMs": 621,
           "id": "model-2",
-          "inputTokens": 855,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 12,
+          "inputTokens": 943,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -113,7 +113,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:21.491738898Z",
+        "at": "2026-09-13T14:24:42.778787332Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -121,7 +121,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:21:21.491741388Z",
+        "at": "2026-09-13T14:24:42.778789632Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -129,13 +129,13 @@
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T13:21:21.51600512Z",
+        "at": "2026-09-13T14:24:42.812226788Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-3",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -145,14 +145,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:22.375336175Z",
+        "at": "2026-09-13T14:24:44.05947196Z",
         "call": {
-          "costMicros": 514,
-          "durationMs": 859,
+          "costMicros": 368,
+          "durationMs": 1247,
           "id": "model-3",
-          "inputTokens": 1104,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 45,
+          "inputTokens": 1201,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 56,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -161,7 +161,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:22.398540305Z",
+        "at": "2026-09-13T14:24:44.174567224Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -169,21 +169,21 @@
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T13:21:22.398558285Z",
+        "at": "2026-09-13T14:24:44.174584614Z",
         "call": null,
-        "detail": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval.",
+        "detail": "Order record verifies the order is damaged; customer reports all 50 labels were torn. Requesting a refund of the paid amount under the damaged-goods policy.",
         "kind": "proposal",
         "seq": 15,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T13:21:22.418866736Z",
+        "at": "2026-09-13T14:24:44.202749621Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-4",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -193,14 +193,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:23.113803379Z",
+        "at": "2026-09-13T14:24:45.286018504Z",
         "call": {
-          "costMicros": 542,
-          "durationMs": 694,
+          "costMicros": 374,
+          "durationMs": 1083,
           "id": "model-4",
-          "inputTokens": 1309,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 1425,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -209,7 +209,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:23.13808873Z",
+        "at": "2026-09-13T14:24:45.326923822Z",
         "call": null,
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
@@ -217,7 +217,7 @@
         "title": "awaiting approval"
       },
       {
-        "at": "2026-09-13T13:21:24.908451768Z",
+        "at": "2026-09-13T14:24:46.764390821Z",
         "call": null,
         "detail": "approve",
         "kind": "approval",
@@ -225,7 +225,7 @@
         "title": "Human decision recorded"
       },
       {
-        "at": "2026-09-13T13:21:24.908467438Z",
+        "at": "2026-09-13T14:24:46.764397611Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -233,7 +233,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:21:26.422618278Z",
+        "at": "2026-09-13T14:24:48.135818544Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -241,7 +241,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:21:26.451348054Z",
+        "at": "2026-09-13T14:24:48.175779315Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -249,7 +249,7 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:21:27.276667463Z",
+        "at": "2026-09-13T14:24:48.885237681Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -257,7 +257,7 @@
         "title": "execute_action"
       },
       {
-        "at": "2026-09-13T13:21:27.276690763Z",
+        "at": "2026-09-13T14:24:48.885270341Z",
         "call": null,
         "detail": "Simulated refund recorded for order-1043. No external action occurred.",
         "kind": "receipt",
@@ -265,13 +265,13 @@
         "title": "Simulated action recorded"
       },
       {
-        "at": "2026-09-13T13:21:27.295004211Z",
+        "at": "2026-09-13T14:24:48.912348802Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-5",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -281,14 +281,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:28.879579142Z",
+        "at": "2026-09-13T14:24:50.86507159Z",
         "call": {
-          "costMicros": 693,
-          "durationMs": 1584,
+          "costMicros": 467,
+          "durationMs": 1952,
           "id": "model-5",
-          "inputTokens": 1440,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 73,
+          "inputTokens": 1563,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 63,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -297,9 +297,9 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:28.899979204Z",
+        "at": "2026-09-13T14:24:50.904014684Z",
         "call": null,
-        "detail": "The order-1043 was verified as damaged, matching the customer's report of torn labels. A refund for the full amount has been proposed and approved following the damage policy, which requires human approval for such cases.",
+        "detail": "A simulated full refund of $48.00 was recorded for order-1043 after the order was verified as damaged. No external payment action occurred.",
         "kind": "status",
         "seq": 27,
         "title": "completed"
@@ -337,9 +337,9 @@
         "version": "v1"
       }
     ],
-    "id": "45222729fc8dc891b913ec1b6633e6baf9dd9f8e61f5d5e8",
-    "inputTokens": 5463,
-    "model": "gpt-4.1-mini",
+    "id": "88d5e21ebd1dfe3e5ca512dcefc3442be3cff53c70ab021a",
+    "inputTokens": 5966,
+    "model": "gpt-5.6-luna",
     "order": {
       "address": "18 Maple St, Sample City",
       "currency": "USD",
@@ -348,24 +348,24 @@
       "totalMinor": 4800,
       "version": 2
     },
-    "outputTokens": 152,
+    "outputTokens": 162,
     "promptVersion": "commerce-v2",
     "proposal": {
       "address": "",
       "amountMinor": 4800,
-      "digest": "9dc7b169df71be136b85f9a5c6c13d8101f4b13b5ddcbb61c7977692bce1d25d",
-      "expires": 1789392082,
-      "id": "b4b40778daa86e970692fda1ab8afc48e9c7e1e6009114b3",
+      "digest": "4c55548818721c78a9cc117c9e1e5fc148abf9c85612840d68bac914b8b45b05",
+      "expires": 1789395884,
+      "id": "fd4050444042b23eea6d546b0caa718d85a62dc2c0e02bf6",
       "kind": "refund",
-      "reason": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval."
+      "reason": "Order record verifies the order is damaged; customer reports all 50 labels were torn. Requesting a refund of the paid amount under the damaged-goods policy."
     },
     "receipt": {
       "detail": "Simulated refund recorded for order-1043. No external action occurred.",
-      "id": "3200ffe8f08d56f1508079795e8f7e5c81f8e0972abf679b",
+      "id": "e55b61b7686aeda6f6c1f314efe1cf8e26ff2262ac46dde8",
       "simulated": true
     },
     "state": "completed",
-    "summary": "The order-1043 was verified as damaged, matching the customer's report of torn labels. A refund for the full amount has been proposed and approved following the damage policy, which requires human approval for such cases.",
+    "summary": "A simulated full refund of $48.00 was recorded for order-1043 after the order was verified as damaged. No external payment action occurred.",
     "ticket": {
       "id": "ticket-damage",
       "message": "The package arrived damaged and all 50 labels are torn. Please refund the order.",
@@ -374,13 +374,13 @@
       "subject": "A damaged delivery"
     },
     "turns": 5,
-    "usedMicros": 2431
+    "usedMicros": 1689
   },
   "approvalSnapshot": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T13:21:16.990041905Z",
+        "at": "2026-09-13T14:24:38.625813075Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -388,7 +388,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:21:18.563094906Z",
+        "at": "2026-09-13T14:24:39.965611602Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -396,7 +396,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:21:18.580341282Z",
+        "at": "2026-09-13T14:24:40.01479578Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -404,13 +404,13 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:21:19.423475013Z",
+        "at": "2026-09-13T14:24:40.70378885Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-1",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -420,14 +420,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:20.768290048Z",
+        "at": "2026-09-13T14:24:42.066894186Z",
         "call": {
-          "costMicros": 320,
-          "durationMs": 1344,
+          "costMicros": 226,
+          "durationMs": 1363,
           "id": "model-1",
-          "inputTokens": 755,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 834,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -436,7 +436,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:20.787012622Z",
+        "at": "2026-09-13T14:24:42.095499707Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -444,7 +444,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:21:20.787014952Z",
+        "at": "2026-09-13T14:24:42.095502387Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -452,13 +452,13 @@
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T13:21:20.803813751Z",
+        "at": "2026-09-13T14:24:42.125902483Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-2",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -468,14 +468,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:21.466565564Z",
+        "at": "2026-09-13T14:24:42.747576436Z",
         "call": {
-          "costMicros": 362,
-          "durationMs": 662,
+          "costMicros": 254,
+          "durationMs": 621,
           "id": "model-2",
-          "inputTokens": 855,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 12,
+          "inputTokens": 943,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -484,7 +484,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:21.491738898Z",
+        "at": "2026-09-13T14:24:42.778787332Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -492,7 +492,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:21:21.491741388Z",
+        "at": "2026-09-13T14:24:42.778789632Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -500,13 +500,13 @@
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T13:21:21.51600512Z",
+        "at": "2026-09-13T14:24:42.812226788Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-3",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -516,14 +516,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:22.375336175Z",
+        "at": "2026-09-13T14:24:44.05947196Z",
         "call": {
-          "costMicros": 514,
-          "durationMs": 859,
+          "costMicros": 368,
+          "durationMs": 1247,
           "id": "model-3",
-          "inputTokens": 1104,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 45,
+          "inputTokens": 1201,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 56,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -532,7 +532,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:22.398540305Z",
+        "at": "2026-09-13T14:24:44.174567224Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -540,21 +540,21 @@
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T13:21:22.398558285Z",
+        "at": "2026-09-13T14:24:44.174584614Z",
         "call": null,
-        "detail": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval.",
+        "detail": "Order record verifies the order is damaged; customer reports all 50 labels were torn. Requesting a refund of the paid amount under the damaged-goods policy.",
         "kind": "proposal",
         "seq": 15,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T13:21:22.418866736Z",
+        "at": "2026-09-13T14:24:44.202749621Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-4",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -564,14 +564,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:21:23.113803379Z",
+        "at": "2026-09-13T14:24:45.286018504Z",
         "call": {
-          "costMicros": 542,
-          "durationMs": 694,
+          "costMicros": 374,
+          "durationMs": 1083,
           "id": "model-4",
-          "inputTokens": 1309,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 1425,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -580,7 +580,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:21:23.13808873Z",
+        "at": "2026-09-13T14:24:45.326923822Z",
         "call": null,
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
@@ -620,9 +620,9 @@
         "version": "v1"
       }
     ],
-    "id": "45222729fc8dc891b913ec1b6633e6baf9dd9f8e61f5d5e8",
-    "inputTokens": 4023,
-    "model": "gpt-4.1-mini",
+    "id": "88d5e21ebd1dfe3e5ca512dcefc3442be3cff53c70ab021a",
+    "inputTokens": 4403,
+    "model": "gpt-5.6-luna",
     "order": {
       "address": "18 Maple St, Sample City",
       "currency": "USD",
@@ -631,16 +631,16 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 79,
+    "outputTokens": 99,
     "promptVersion": "commerce-v2",
     "proposal": {
       "address": "",
       "amountMinor": 4800,
-      "digest": "9dc7b169df71be136b85f9a5c6c13d8101f4b13b5ddcbb61c7977692bce1d25d",
-      "expires": 1789392082,
-      "id": "b4b40778daa86e970692fda1ab8afc48e9c7e1e6009114b3",
+      "digest": "4c55548818721c78a9cc117c9e1e5fc148abf9c85612840d68bac914b8b45b05",
+      "expires": 1789395884,
+      "id": "fd4050444042b23eea6d546b0caa718d85a62dc2c0e02bf6",
       "kind": "refund",
-      "reason": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval."
+      "reason": "Order record verifies the order is damaged; customer reports all 50 labels were torn. Requesting a refund of the paid amount under the damaged-goods policy."
     },
     "receipt": null,
     "state": "awaiting_approval",
@@ -653,6 +653,6 @@
       "subject": "A damaged delivery"
     },
     "turns": 4,
-    "usedMicros": 1738
+    "usedMicros": 1222
   }
 }

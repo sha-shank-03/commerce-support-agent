@@ -2,14 +2,14 @@
   "version": 1,
   "scenario": "browser",
   "label": "Carrier portal fallback",
-  "recordedAt": "2026-09-13T13:26:18.938802722Z",
-  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
+  "recordedAt": "2026-09-13T14:30:02.85770166Z",
+  "commit": "2b9fc8b3747aa184bb0c9b86e3fb3fbc7a8c667f",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T13:26:18.938802722Z",
+        "at": "2026-09-13T14:30:02.85770166Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -17,7 +17,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:26:20.482497332Z",
+        "at": "2026-09-13T14:30:04.275281619Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -25,7 +25,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:26:20.520260099Z",
+        "at": "2026-09-13T14:30:04.400780167Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -33,13 +33,13 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:26:21.378384329Z",
+        "at": "2026-09-13T14:30:05.069003872Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-1",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -49,14 +49,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:26:22.737079377Z",
+        "at": "2026-09-13T14:30:06.259249989Z",
         "call": {
-          "costMicros": 319,
-          "durationMs": 1358,
+          "costMicros": 225,
+          "durationMs": 1190,
           "id": "model-1",
-          "inputTokens": 753,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 11,
+          "inputTokens": 832,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 14,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -65,7 +65,7 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:26:22.762408079Z",
+        "at": "2026-09-13T14:30:07.054262445Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -73,7 +73,7 @@
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:26:22.762410899Z",
+        "at": "2026-09-13T14:30:07.054265255Z",
         "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
@@ -81,13 +81,13 @@
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T13:26:22.793752436Z",
+        "at": "2026-09-13T14:30:07.129003858Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-2",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -97,14 +97,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:26:23.582271337Z",
+        "at": "2026-09-13T14:30:07.963215481Z",
         "call": {
-          "costMicros": 361,
-          "durationMs": 788,
+          "costMicros": 254,
+          "durationMs": 834,
           "id": "model-2",
-          "inputTokens": 853,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 12,
+          "inputTokens": 941,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -113,29 +113,29 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:26:23.612726559Z",
+        "at": "2026-09-13T14:30:07.99852144Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 10,
-        "title": "browser_fixture"
+        "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T13:26:24.572417529Z",
+        "at": "2026-09-13T14:30:07.99852353Z",
         "call": null,
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
         "seq": 11,
-        "title": "browser_result"
+        "title": "get_policies"
       },
       {
-        "at": "2026-09-13T13:26:24.946893228Z",
+        "at": "2026-09-13T14:30:08.03607633Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-3",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -145,14 +145,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:26:25.944250365Z",
+        "at": "2026-09-13T14:30:08.800193717Z",
         "call": {
-          "costMicros": 470,
-          "durationMs": 997,
+          "costMicros": 318,
+          "durationMs": 764,
           "id": "model-3",
-          "inputTokens": 910,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 66,
+          "inputTokens": 1199,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -161,11 +161,99 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:26:25.983255382Z",
+        "at": "2026-09-13T14:30:08.836041068Z",
         "call": null,
-        "detail": "The shipment for order-1046 is currently in transit at the Sample City sorting centre. This status is confirmed using the carrier portal due to the shipment API being unavailable.",
-        "kind": "status",
+        "detail": "Validated application tool call",
+        "kind": "tool",
         "seq": 14,
+        "title": "lookup_shipment"
+      },
+      {
+        "at": "2026-09-13T14:30:08.876678677Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-4",
+          "inputTokens": null,
+          "model": "gpt-5.6-luna",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 15,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T14:30:09.733538688Z",
+        "call": {
+          "costMicros": 329,
+          "durationMs": 856,
+          "id": "model-4",
+          "inputTokens": 1243,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 15,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 16,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T14:30:12.190394554Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 17,
+        "title": "browser_fixture"
+      },
+      {
+        "at": "2026-09-13T14:30:13.019709841Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 18,
+        "title": "browser_result"
+      },
+      {
+        "at": "2026-09-13T14:30:13.399093855Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-5",
+          "inputTokens": null,
+          "model": "gpt-5.6-luna",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 19,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T14:30:15.021057486Z",
+        "call": {
+          "costMicros": 424,
+          "durationMs": 1621,
+          "id": "model-5",
+          "inputTokens": 1309,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 80,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 20,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T14:30:15.063833617Z",
+        "call": null,
+        "detail": "The carrier portal reports that order-1046 is in transit at the Sample City sorting centre. No delivery date is confirmed. The order is shipped, and a delay alone does not authorize a refund.",
+        "kind": "status",
+        "seq": 21,
         "title": "completed"
       }
     ],
@@ -207,9 +295,9 @@
         "version": "fixture-v1"
       }
     ],
-    "id": "d9e186ecd1660d9132f6435e4cfd9e397814c5c8d0af954e",
-    "inputTokens": 2516,
-    "model": "gpt-4.1-mini",
+    "id": "e24ecfbb278cec58ccba6473419a4c7bcbb703bf961c5e74",
+    "inputTokens": 5524,
+    "model": "gpt-5.6-luna",
     "order": {
       "address": "18 Maple St, Sample City",
       "currency": "USD",
@@ -218,12 +306,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 89,
+    "outputTokens": 139,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "completed",
-    "summary": "The shipment for order-1046 is currently in transit at the Sample City sorting centre. This status is confirmed using the carrier portal due to the shipment API being unavailable.",
+    "summary": "The carrier portal reports that order-1046 is in transit at the Sample City sorting centre. No delivery date is confirmed. The order is shipped, and a delay alone does not authorize a refund.",
     "ticket": {
       "id": "ticket-browser",
       "message": "The shipment API is unavailable. Please use the carrier portal to check my delivery.",
@@ -231,8 +319,8 @@
       "scenario": "browser",
       "subject": "Carrier portal fallback"
     },
-    "turns": 3,
-    "usedMicros": 1150
+    "turns": 5,
+    "usedMicros": 1550
   },
   "approvalSnapshot": null
 }

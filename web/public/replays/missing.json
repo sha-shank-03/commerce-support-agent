@@ -2,14 +2,14 @@
   "version": 1,
   "scenario": "missing",
   "label": "An order we cannot identify",
-  "recordedAt": "2026-09-13T13:24:49.193884291Z",
-  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
+  "recordedAt": "2026-09-13T14:28:28.117923196Z",
+  "commit": "2b9fc8b3747aa184bb0c9b86e3fb3fbc7a8c667f",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T13:24:49.193884291Z",
+        "at": "2026-09-13T14:28:28.117923196Z",
         "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
@@ -17,7 +17,7 @@
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T13:24:50.932619997Z",
+        "at": "2026-09-13T14:28:29.644594628Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -25,7 +25,7 @@
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T13:24:52.717908962Z",
+        "at": "2026-09-13T14:28:29.695162355Z",
         "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
@@ -33,13 +33,13 @@
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T13:24:53.521768765Z",
+        "at": "2026-09-13T14:28:30.373911391Z",
         "call": {
           "costMicros": null,
           "durationMs": null,
           "id": "model-1",
           "inputTokens": null,
-          "model": "gpt-4.1-mini",
+          "model": "gpt-5.6-luna",
           "outputTokens": null,
           "phase": "started"
         },
@@ -49,14 +49,14 @@
         "title": "Model call started"
       },
       {
-        "at": "2026-09-13T13:24:55.536366567Z",
+        "at": "2026-09-13T14:28:31.863275408Z",
         "call": {
-          "costMicros": 365,
-          "durationMs": 2014,
+          "costMicros": 259,
+          "durationMs": 1489,
           "id": "model-1",
-          "inputTokens": 731,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 45,
+          "inputTokens": 808,
+          "model": "gpt-5.6-luna",
+          "outputTokens": 47,
           "phase": "completed"
         },
         "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
@@ -65,59 +65,11 @@
         "title": "Model response received"
       },
       {
-        "at": "2026-09-13T13:24:55.572275818Z",
+        "at": "2026-09-13T14:28:31.905088561Z",
         "call": null,
-        "detail": "Validated application tool call",
-        "kind": "tool",
-        "seq": 6,
-        "title": "audit_mcp"
-      },
-      {
-        "at": "2026-09-13T13:24:55.572279048Z",
-        "call": null,
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
-        "seq": 7,
-        "title": "get_order"
-      },
-      {
-        "at": "2026-09-13T13:24:55.60538877Z",
-        "call": {
-          "costMicros": null,
-          "durationMs": null,
-          "id": "model-2",
-          "inputTokens": null,
-          "model": "gpt-4.1-mini",
-          "outputTokens": null,
-          "phase": "started"
-        },
-        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
-        "kind": "model",
-        "seq": 8,
-        "title": "Model call started"
-      },
-      {
-        "at": "2026-09-13T13:24:57.723825596Z",
-        "call": {
-          "costMicros": 385,
-          "durationMs": 2118,
-          "id": "model-2",
-          "inputTokens": 801,
-          "model": "gpt-4.1-mini",
-          "outputTokens": 40,
-          "phase": "completed"
-        },
-        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
-        "kind": "model",
-        "seq": 9,
-        "title": "Model response received"
-      },
-      {
-        "at": "2026-09-13T13:24:59.102004844Z",
-        "call": null,
-        "detail": "The order ID is missing. Please provide the order ID so I can assist you with your order.",
+        "detail": "Please provide the order ID so I can investigate the order-specific request. I won\u2019t infer the order from the ticket text.",
         "kind": "status",
-        "seq": 10,
+        "seq": 6,
         "title": "awaiting input"
       }
     ],
@@ -147,9 +99,9 @@
         "version": "v1"
       }
     ],
-    "id": "7d7d566474de25eccbd87af8df0d3255b260013bf1ae2b55",
-    "inputTokens": 1532,
-    "model": "gpt-4.1-mini",
+    "id": "0a870d9a29620cc049528434bbf9343d273813c0d24d18bf",
+    "inputTokens": 808,
+    "model": "gpt-5.6-luna",
     "order": {
       "address": "18 Maple St, Sample City",
       "currency": "USD",
@@ -158,12 +110,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 85,
+    "outputTokens": 47,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "awaiting_input",
-    "summary": "The order ID is missing. Please provide the order ID so I can assist you with your order.",
+    "summary": "Please provide the order ID so I can investigate the order-specific request. I won\u2019t infer the order from the ticket text.",
     "ticket": {
       "id": "ticket-missing",
       "message": "I need help with an order, but I cannot find the order number.",
@@ -171,8 +123,8 @@
       "scenario": "missing",
       "subject": "An order we cannot identify"
     },
-    "turns": 2,
-    "usedMicros": 750
+    "turns": 1,
+    "usedMicros": 259
   },
   "approvalSnapshot": null
 }
