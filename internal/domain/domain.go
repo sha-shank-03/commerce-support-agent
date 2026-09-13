@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const PromptVersion = "commerce-v1"
+const PromptVersion = "commerce-v2"
 
 type Order struct {
 	ID          string `json:"id"`

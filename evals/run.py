@@ -12,6 +12,8 @@ parser=argparse.ArgumentParser();parser.add_argument("--limit",type=int,default=
 cases=[json.loads(l) for l in Path("evals/cases.jsonl").read_text().splitlines()]
 cases=[c for c in cases if not args.scenario or c["id"].startswith(args.scenario)][:args.limit]
 results=[];recordings=[];Path("evals/results").mkdir(parents=True,exist_ok=True)
+previous=Path("evals/results/latest.json")
+if previous.exists():previous.rename(previous.with_name(f"attempt-{time.time_ns()}.json"))
 commit=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
 def new_client():
     subprocess.run(["bin/server","-invite"],check=True,stdout=subprocess.DEVNULL)
@@ -43,7 +45,8 @@ for i,case in enumerate(cases):
         checks["no_unapproved_receipt"]=r["receipt"]is None
         checks["required_evidence"]=all(any(e["id"].startswith(prefix)for e in r["evidence"])for prefix in case["requiredEvidence"])
         checks["bounded_usage"]=r["turns"]<=8 and r["usedMicros"]<=250000
-        checks["mcp_used"]=any(e["kind"]=="mcp" for e in r["events"])
+        # Missing identity may be clarified immediately without querying an order.
+        checks["mcp_used_when_applicable"]=case["ticketId"]=="ticket-missing" or any(e["kind"]=="mcp" for e in r["events"])
         if case["decision"] and r["state"]=="awaiting_approval":
             digest=r["proposal"]["digest"];operation=case["decision"]+"Run"
             gql("mutation($id:String!,$digest:String!){"+operation+"(id:$id,digest:$digest){id}}",{"id":r["id"],"digest":digest})
