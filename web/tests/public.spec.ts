@@ -5,8 +5,8 @@ test('genuine replay is interactive with API access blocked',async({page})=>{
   page.on('request',r=>{if(['fetch','xhr'].includes(r.resourceType()))dataRequests.push(r.url());});
   page.on('pageerror',e=>errors.push(e.message));
   await page.route('**/api/**',route=>{calls.push(route.request().url());return route.abort();});
-  await page.goto('/');
-  await expect(page.getByRole('heading',{level:1})).toContainText('A thoughtful answer.');
+  await page.goto('/#run');
+  await expect(page.getByRole('heading',{level:1})).toContainText('Commerce support agent');
   await expect(page.getByRole('button',{name:/CASE 01/})).toBeVisible();
   await expect(page.getByText('Real provider execution',{exact:false})).toBeVisible();
   const slider=page.getByRole('slider',{name:'Recorded timeline position'});
@@ -20,7 +20,7 @@ test('genuine replay is interactive with API access blocked',async({page})=>{
 });
 
 test('mobile replay fits and invite entry is keyboard accessible',async({page})=>{
-  await page.setViewportSize({width:390,height:844});await page.goto('/');
+  await page.setViewportSize({width:390,height:844});await page.goto('/#run');
   await expect(page.getByRole('button',{name:/CASE 01/})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const live=page.getByRole('tab',{name:'Invited live access'});await live.focus();await page.keyboard.press('Enter');

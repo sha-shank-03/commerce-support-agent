@@ -7,6 +7,17 @@ export const eventSchema = z.object({
   title: z.string(),
   detail: z.string(),
   at: z.string(),
+  call: z
+    .object({
+      id: z.string(),
+      phase: z.enum(["started", "completed"]),
+      model: z.string(),
+      durationMs: z.number().nonnegative().nullish(),
+      inputTokens: z.number().int().nonnegative().nullish(),
+      outputTokens: z.number().int().nonnegative().nullish(),
+      costMicros: z.number().nonnegative().nullish(),
+    })
+    .nullish(),
 });
 export const ticketSchema = z.object({
   id: z.string(),

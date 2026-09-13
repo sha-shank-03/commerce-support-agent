@@ -2,7 +2,7 @@ fragment RunDetails on Run {
   id state summary error model promptVersion turns usedMicros inputTokens outputTokens
   ticket { id subject message orderId scenario }
   order { id status totalMinor currency address version }
-  events { seq kind title detail at }
+  events { seq kind title detail at call { id phase model durationMs inputTokens outputTokens costMicros } }
   evidence { id title content version }
   proposal { id kind digest amountMinor address reason expires }
   receipt { id detail simulated }

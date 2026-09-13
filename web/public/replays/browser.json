@@ -2,66 +2,170 @@
   "version": 1,
   "scenario": "browser",
   "label": "Carrier portal fallback",
-  "recordedAt": "2026-09-13T05:15:40Z",
-  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
+  "recordedAt": "2026-09-13T13:26:18.938802722Z",
+  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T05:15:40Z",
+        "at": "2026-09-13T13:26:18.938802722Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:15:41Z",
+        "at": "2026-09-13T13:26:20.482497332Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:15:41Z",
+        "at": "2026-09-13T13:26:20.520260099Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:15:42Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:26:21.378384329Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-1",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 4,
-        "title": "audit_mcp"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:15:42Z",
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
+        "at": "2026-09-13T13:26:22.737079377Z",
+        "call": {
+          "costMicros": 319,
+          "durationMs": 1358,
+          "id": "model-1",
+          "inputTokens": 753,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 5,
-        "title": "get_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:15:43Z",
+        "at": "2026-09-13T13:26:22.762408079Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T13:26:22.762410899Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 7,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T13:26:22.793752436Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-2",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 8,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:26:23.582271337Z",
+        "call": {
+          "costMicros": 361,
+          "durationMs": 788,
+          "id": "model-2",
+          "inputTokens": 853,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 12,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 9,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:26:23.612726559Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 10,
         "title": "browser_fixture"
       },
       {
-        "at": "2026-09-13T05:15:44Z",
+        "at": "2026-09-13T13:26:24.572417529Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
-        "seq": 7,
+        "seq": 11,
         "title": "browser_result"
       },
       {
-        "at": "2026-09-13T05:15:45Z",
-        "detail": "The shipment for order-1046 is currently in transit at the Sample City sorting centre, according to the carrier portal fallback lookup.",
+        "at": "2026-09-13T13:26:24.946893228Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-3",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 12,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:26:25.944250365Z",
+        "call": {
+          "costMicros": 470,
+          "durationMs": 997,
+          "id": "model-3",
+          "inputTokens": 910,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 66,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 13,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:26:25.983255382Z",
+        "call": null,
+        "detail": "The shipment for order-1046 is currently in transit at the Sample City sorting centre. This status is confirmed using the carrier portal due to the shipment API being unavailable.",
         "kind": "status",
-        "seq": 8,
+        "seq": 14,
         "title": "completed"
       }
     ],
@@ -103,7 +207,7 @@
         "version": "fixture-v1"
       }
     ],
-    "id": "8a69b0fc7fe99b64e8a530ef3ee7fb4d51bbd54f0ac375d0",
+    "id": "d9e186ecd1660d9132f6435e4cfd9e397814c5c8d0af954e",
     "inputTokens": 2516,
     "model": "gpt-4.1-mini",
     "order": {
@@ -114,12 +218,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 81,
+    "outputTokens": 89,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "completed",
-    "summary": "The shipment for order-1046 is currently in transit at the Sample City sorting centre, according to the carrier portal fallback lookup.",
+    "summary": "The shipment for order-1046 is currently in transit at the Sample City sorting centre. This status is confirmed using the carrier portal due to the shipment API being unavailable.",
     "ticket": {
       "id": "ticket-browser",
       "message": "The shipment API is unavailable. Please use the carrier portal to check my delivery.",
@@ -128,7 +232,7 @@
       "subject": "Carrier portal fallback"
     },
     "turns": 3,
-    "usedMicros": 1137
+    "usedMicros": 1150
   },
   "approvalSnapshot": null
 }

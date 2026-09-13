@@ -2,66 +2,170 @@
   "version": 1,
   "scenario": "conflict",
   "label": "Two policies, one careful decision",
-  "recordedAt": "2026-09-13T05:15:12Z",
-  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
+  "recordedAt": "2026-09-13T13:25:30.153514396Z",
+  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T05:15:12Z",
+        "at": "2026-09-13T13:25:30.153514396Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:15:13Z",
+        "at": "2026-09-13T13:25:31.812169354Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:15:13Z",
+        "at": "2026-09-13T13:25:31.839184544Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:15:15Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:25:32.730571766Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-1",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 4,
-        "title": "audit_mcp"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:15:15Z",
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
+        "at": "2026-09-13T13:25:34.497528171Z",
+        "call": {
+          "costMicros": 322,
+          "durationMs": 1766,
+          "id": "model-1",
+          "inputTokens": 759,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 5,
-        "title": "get_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:15:16Z",
+        "at": "2026-09-13T13:25:34.527678287Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T05:15:16Z",
+        "at": "2026-09-13T13:25:34.527680627Z",
+        "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 7,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T13:25:34.567719476Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-2",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 8,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:25:35.297514273Z",
+        "call": {
+          "costMicros": 363,
+          "durationMs": 729,
+          "id": "model-2",
+          "inputTokens": 859,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 12,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 9,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:25:35.323504301Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 10,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T13:25:35.323506511Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 11,
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T05:15:17Z",
-        "detail": "The order #order-1045 was damaged and the damage policy allows either a refund or replacement with human approval. However, a final-sale promotion conflicts with this damage policy. According to the conflicting policies rule, such cases must be escalated for human review before any refund or replacement can be proposed.",
+        "at": "2026-09-13T13:25:35.353114071Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-3",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 12,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:25:36.698505003Z",
+        "call": {
+          "costMicros": 597,
+          "durationMs": 1345,
+          "id": "model-3",
+          "inputTokens": 1108,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 96,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 13,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:25:36.751073935Z",
+        "call": null,
+        "detail": "The order was delivered damaged, which typically allows a refund or replacement per damaged goods policy. However, the promotion states all sales are final, creating a conflict between policies. Per the conflicting policies guidelines, this case requires human review to resolve the conflict before any refund or replacement can be proposed.",
         "kind": "status",
-        "seq": 8,
+        "seq": 14,
         "title": "completed"
       }
     ],
@@ -97,7 +201,7 @@
         "version": "v1"
       }
     ],
-    "id": "d9a7d36bd14b51a37469dc2c8c937c537b2c9fd30c278a46",
+    "id": "379dcc42f997299d6520dc66675ebb69fa4a5de922b71e66",
     "inputTokens": 2726,
     "model": "gpt-4.1-mini",
     "order": {
@@ -108,12 +212,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 121,
+    "outputTokens": 119,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "completed",
-    "summary": "The order #order-1045 was damaged and the damage policy allows either a refund or replacement with human approval. However, a final-sale promotion conflicts with this damage policy. According to the conflicting policies rule, such cases must be escalated for human review before any refund or replacement can be proposed.",
+    "summary": "The order was delivered damaged, which typically allows a refund or replacement per damaged goods policy. However, the promotion states all sales are final, creating a conflict between policies. Per the conflicting policies guidelines, this case requires human review to resolve the conflict before any refund or replacement can be proposed.",
     "ticket": {
       "id": "ticket-conflict",
       "message": "A promotion says all sales final, but my print arrived damaged. Which policy applies?",
@@ -122,7 +226,7 @@
       "subject": "Two policies, one careful decision"
     },
     "turns": 3,
-    "usedMicros": 1285
+    "usedMicros": 1282
   },
   "approvalSnapshot": null
 }

@@ -2,129 +2,306 @@
   "version": 1,
   "scenario": "damage",
   "label": "A damaged delivery",
-  "recordedAt": "2026-09-13T05:12:40Z",
-  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
+  "recordedAt": "2026-09-13T13:21:16.990041905Z",
+  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T05:12:40Z",
+        "at": "2026-09-13T13:21:16.990041905Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:12:40Z",
+        "at": "2026-09-13T13:21:18.563094906Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:12:41Z",
+        "at": "2026-09-13T13:21:18.580341282Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:12:42Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:21:19.423475013Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-1",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 4,
-        "title": "audit_mcp"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:12:42Z",
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
+        "at": "2026-09-13T13:21:20.768290048Z",
+        "call": {
+          "costMicros": 320,
+          "durationMs": 1344,
+          "id": "model-1",
+          "inputTokens": 755,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 5,
-        "title": "get_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:12:44Z",
+        "at": "2026-09-13T13:21:20.787012622Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T05:12:44Z",
+        "at": "2026-09-13T13:21:20.787014952Z",
+        "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 7,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T13:21:20.803813751Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-2",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 8,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:21:21.466565564Z",
+        "call": {
+          "costMicros": 362,
+          "durationMs": 662,
+          "id": "model-2",
+          "inputTokens": 855,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 12,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 9,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:21:21.491738898Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 10,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T13:21:21.491741388Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 11,
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T05:12:45Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
-        "seq": 8,
-        "title": "propose_action"
-      },
-      {
-        "at": "2026-09-13T05:12:45Z",
-        "detail": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval.",
-        "kind": "proposal",
-        "seq": 9,
-        "title": "Resolution proposed"
-      },
-      {
-        "at": "2026-09-13T05:12:46Z",
-        "detail": "Investigation complete. Review the exact proposed action before it can execute.",
-        "kind": "status",
-        "seq": 10,
-        "title": "awaiting approval"
-      },
-      {
-        "at": "2026-09-13T05:12:46Z",
-        "detail": "approve",
-        "kind": "approval",
-        "seq": 11,
-        "title": "Human decision recorded"
-      },
-      {
-        "at": "2026-09-13T05:12:46Z",
-        "detail": "Bounded investigation of synthetic data.",
-        "kind": "status",
+        "at": "2026-09-13T13:21:21.51600512Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-3",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 12,
-        "title": "Agent started"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:12:47Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:21:22.375336175Z",
+        "call": {
+          "costMicros": 514,
+          "durationMs": 859,
+          "id": "model-3",
+          "inputTokens": 1104,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 45,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 13,
-        "title": "lookup_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:12:47Z",
+        "at": "2026-09-13T13:21:22.398540305Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 14,
+        "title": "propose_action"
+      },
+      {
+        "at": "2026-09-13T13:21:22.398558285Z",
+        "call": null,
+        "detail": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval.",
+        "kind": "proposal",
+        "seq": 15,
+        "title": "Resolution proposed"
+      },
+      {
+        "at": "2026-09-13T13:21:22.418866736Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-4",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 16,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:21:23.113803379Z",
+        "call": {
+          "costMicros": 542,
+          "durationMs": 694,
+          "id": "model-4",
+          "inputTokens": 1309,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 17,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:21:23.13808873Z",
+        "call": null,
+        "detail": "Investigation complete. Review the exact proposed action before it can execute.",
+        "kind": "status",
+        "seq": 18,
+        "title": "awaiting approval"
+      },
+      {
+        "at": "2026-09-13T13:21:24.908451768Z",
+        "call": null,
+        "detail": "approve",
+        "kind": "approval",
+        "seq": 19,
+        "title": "Human decision recorded"
+      },
+      {
+        "at": "2026-09-13T13:21:24.908467438Z",
+        "call": null,
+        "detail": "Bounded investigation of synthetic data.",
+        "kind": "status",
+        "seq": 20,
+        "title": "Agent started"
+      },
+      {
+        "at": "2026-09-13T13:21:26.422618278Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 21,
+        "title": "lookup_order"
+      },
+      {
+        "at": "2026-09-13T13:21:26.451348054Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 22,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:12:47Z",
+        "at": "2026-09-13T13:21:27.276667463Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
-        "seq": 15,
+        "seq": 23,
         "title": "execute_action"
       },
       {
-        "at": "2026-09-13T05:12:47Z",
+        "at": "2026-09-13T13:21:27.276690763Z",
+        "call": null,
         "detail": "Simulated refund recorded for order-1043. No external action occurred.",
         "kind": "receipt",
-        "seq": 16,
+        "seq": 24,
         "title": "Simulated action recorded"
       },
       {
-        "at": "2026-09-13T05:12:49Z",
-        "detail": "The order #order-1043 was confirmed to be damaged with all 50 labels torn, per customer report and order data. A refund for the full paid amount of $48.00 was proposed and approved following the damaged goods policy, which requires human approval for refunds. The refund has been simulated as completed.",
+        "at": "2026-09-13T13:21:27.295004211Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-5",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 25,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:21:28.879579142Z",
+        "call": {
+          "costMicros": 693,
+          "durationMs": 1584,
+          "id": "model-5",
+          "inputTokens": 1440,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 73,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 26,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:21:28.899979204Z",
+        "call": null,
+        "detail": "The order-1043 was verified as damaged, matching the customer's report of torn labels. A refund for the full amount has been proposed and approved following the damage policy, which requires human approval for such cases.",
         "kind": "status",
-        "seq": 17,
+        "seq": 27,
         "title": "completed"
       }
     ],
@@ -160,8 +337,8 @@
         "version": "v1"
       }
     ],
-    "id": "9df1c50fb5feb4d4cd4c7e81ee796b72761aa34f86b9aa63",
-    "inputTokens": 5439,
+    "id": "45222729fc8dc891b913ec1b6633e6baf9dd9f8e61f5d5e8",
+    "inputTokens": 5463,
     "model": "gpt-4.1-mini",
     "order": {
       "address": "18 Maple St, Sample City",
@@ -171,24 +348,24 @@
       "totalMinor": 4800,
       "version": 2
     },
-    "outputTokens": 173,
+    "outputTokens": 152,
     "promptVersion": "commerce-v2",
     "proposal": {
       "address": "",
       "amountMinor": 4800,
-      "digest": "0bf6506bf400367bba7530a748a903f4d4fc56cc20dd930e4d512d9c8357383a",
-      "expires": 1789362765,
-      "id": "0bea20992fe8bcf2bba94a864dad9042de3f3a7d83913154",
+      "digest": "9dc7b169df71be136b85f9a5c6c13d8101f4b13b5ddcbb61c7977692bce1d25d",
+      "expires": 1789392082,
+      "id": "b4b40778daa86e970692fda1ab8afc48e9c7e1e6009114b3",
       "kind": "refund",
-      "reason": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval."
+      "reason": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval."
     },
     "receipt": {
       "detail": "Simulated refund recorded for order-1043. No external action occurred.",
-      "id": "dba3d402a58f954455754200896b9f8d31939ee8849c4c85",
+      "id": "3200ffe8f08d56f1508079795e8f7e5c81f8e0972abf679b",
       "simulated": true
     },
     "state": "completed",
-    "summary": "The order #order-1043 was confirmed to be damaged with all 50 labels torn, per customer report and order data. A refund for the full paid amount of $48.00 was proposed and approved following the damaged goods policy, which requires human approval for refunds. The refund has been simulated as completed.",
+    "summary": "The order-1043 was verified as damaged, matching the customer's report of torn labels. A refund for the full amount has been proposed and approved following the damage policy, which requires human approval for such cases.",
     "ticket": {
       "id": "ticket-damage",
       "message": "The package arrived damaged and all 50 labels are torn. Please refund the order.",
@@ -197,79 +374,217 @@
       "subject": "A damaged delivery"
     },
     "turns": 5,
-    "usedMicros": 2455
+    "usedMicros": 2431
   },
   "approvalSnapshot": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T05:12:40Z",
+        "at": "2026-09-13T13:21:16.990041905Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:12:40Z",
+        "at": "2026-09-13T13:21:18.563094906Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:12:41Z",
+        "at": "2026-09-13T13:21:18.580341282Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:12:42Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:21:19.423475013Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-1",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 4,
-        "title": "audit_mcp"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:12:42Z",
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
+        "at": "2026-09-13T13:21:20.768290048Z",
+        "call": {
+          "costMicros": 320,
+          "durationMs": 1344,
+          "id": "model-1",
+          "inputTokens": 755,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 5,
-        "title": "get_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:12:44Z",
+        "at": "2026-09-13T13:21:20.787012622Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T05:12:44Z",
+        "at": "2026-09-13T13:21:20.787014952Z",
+        "call": null,
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 7,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T13:21:20.803813751Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-2",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 8,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:21:21.466565564Z",
+        "call": {
+          "costMicros": 362,
+          "durationMs": 662,
+          "id": "model-2",
+          "inputTokens": 855,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 12,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 9,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:21:21.491738898Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 10,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T13:21:21.491741388Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 11,
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T05:12:45Z",
+        "at": "2026-09-13T13:21:21.51600512Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-3",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 12,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:21:22.375336175Z",
+        "call": {
+          "costMicros": 514,
+          "durationMs": 859,
+          "id": "model-3",
+          "inputTokens": 1104,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 45,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 13,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:21:22.398540305Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
-        "seq": 8,
+        "seq": 14,
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T05:12:45Z",
-        "detail": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval.",
+        "at": "2026-09-13T13:21:22.398558285Z",
+        "call": null,
+        "detail": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval.",
         "kind": "proposal",
-        "seq": 9,
+        "seq": 15,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T05:12:46Z",
+        "at": "2026-09-13T13:21:22.418866736Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-4",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 16,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:21:23.113803379Z",
+        "call": {
+          "costMicros": 542,
+          "durationMs": 694,
+          "id": "model-4",
+          "inputTokens": 1309,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 17,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:21:23.13808873Z",
+        "call": null,
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
-        "seq": 10,
+        "seq": 18,
         "title": "awaiting approval"
       }
     ],
@@ -305,8 +620,8 @@
         "version": "v1"
       }
     ],
-    "id": "9df1c50fb5feb4d4cd4c7e81ee796b72761aa34f86b9aa63",
-    "inputTokens": 4014,
+    "id": "45222729fc8dc891b913ec1b6633e6baf9dd9f8e61f5d5e8",
+    "inputTokens": 4023,
     "model": "gpt-4.1-mini",
     "order": {
       "address": "18 Maple St, Sample City",
@@ -321,11 +636,11 @@
     "proposal": {
       "address": "",
       "amountMinor": 4800,
-      "digest": "0bf6506bf400367bba7530a748a903f4d4fc56cc20dd930e4d512d9c8357383a",
-      "expires": 1789362765,
-      "id": "0bea20992fe8bcf2bba94a864dad9042de3f3a7d83913154",
+      "digest": "9dc7b169df71be136b85f9a5c6c13d8101f4b13b5ddcbb61c7977692bce1d25d",
+      "expires": 1789392082,
+      "id": "b4b40778daa86e970692fda1ab8afc48e9c7e1e6009114b3",
       "kind": "refund",
-      "reason": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval."
+      "reason": "The order is verified damaged with torn labels as reported by customer and order data; refund is eligible and requires human approval."
     },
     "receipt": null,
     "state": "awaiting_approval",
@@ -338,6 +653,6 @@
       "subject": "A damaged delivery"
     },
     "turns": 4,
-    "usedMicros": 1734
+    "usedMicros": 1738
   }
 }

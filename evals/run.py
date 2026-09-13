@@ -8,10 +8,12 @@ import subprocess
 import sys
 import time
 import urllib.request
+import urllib.error
 
 FIELDS = "id state summary error model promptVersion turns usedMicros inputTokens outputTokens ticket{id subject message orderId scenario} order{id status totalMinor currency address version} events{seq kind title detail at call{id phase model durationMs inputTokens outputTokens costMicros}} evidence{id title content version} proposal{id kind digest amountMinor address reason expires} receipt{id detail simulated}"
 parser=argparse.ArgumentParser();parser.add_argument("--limit",type=int,default=40);parser.add_argument("--scenario",default="")
 parser.add_argument("--resume",action="store_true",help="Resume only a passing prefix from the same source commit")
+parser.add_argument("--rerun-failed",action="store_true",help="Retain the full previous attempt and rerun only failed cases")
 parser.add_argument("--hosted-site");parser.add_argument("--railway-project");parser.add_argument("--railway-environment");parser.add_argument("--railway-service");args=parser.parse_args()
 selectors=[];issued=[]
 if args.hosted_site:
@@ -24,7 +26,16 @@ cases=[c for c in cases if not args.scenario or c["id"].startswith(args.scenario
 results=[];recordings=[];Path("evals/results").mkdir(parents=True,exist_ok=True)
 previous=Path("evals/results/latest.json")
 commit=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
-if args.resume:
+retry_notice=None
+if args.resume and args.rerun_failed:parser.error("Choose resume or rerun-failed, not both")
+if args.rerun_failed:
+    saved=json.loads(previous.read_text())
+    if saved.get("provider")!="OpenAI" or saved.get("commit")!=commit or [r.get("id") for r in saved["results"]]!=[c["id"] for c in cases]:
+        raise SystemExit("Rerun requires the complete same-source evaluation set")
+    results=saved["results"];recordings=saved["recordings"]
+    retry_notice={"priorPassed":saved["passed"],"priorCases":saved["cases"],"rerunCaseIds":[r["id"] for r in results if not r["passed"]],"method":"Only failed cases rerun; original attempt retained in evaluation history."}
+    previous.rename(previous.with_name(f"attempt-{time.time_ns()}.json"))
+elif args.resume:
     saved=json.loads(previous.read_text());results=saved["results"];recordings=saved["recordings"]
     if saved.get("provider")!="OpenAI" or saved.get("commit")!=commit or not all(r["passed"] for r in results) or [r["id"] for r in results]!=[c["id"] for c in cases[:len(results)]]:
         raise SystemExit("Resume requires a passing prefix from the same provider and source commit")
@@ -42,7 +53,13 @@ def new_client():
     opener=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
     def post(path,data):
         req=urllib.request.Request(api+path,data=json.dumps(data).encode(),headers={"Origin":origin,"Content-Type":"application/json"})
-        with opener.open(req,timeout=190)as r:return json.load(r)
+        readonly=path=="/graphql" and data.get("query","").lstrip().startswith("query")
+        for attempt in range(3 if readonly else 1):
+            try:
+                with opener.open(req,timeout=190)as r:return json.load(r)
+            except (urllib.error.URLError,TimeoutError) as exc:
+                if not readonly or attempt==2 or isinstance(exc,urllib.error.HTTPError) and exc.code<500:raise
+                time.sleep(1)
     post("/session",{"token":Path(".local/eval-invite.txt" if args.hosted_site else ".local/invite.txt").read_text().strip()})
     def gql(query,variables={}):
         response=post("/graphql",{"query":query,"variables":variables})
@@ -59,8 +76,9 @@ def wait(gql,ident):
     raise RuntimeError("run timed out")
 
 start_index=len(results)
-for i,case in enumerate(cases[start_index:],start_index):
-    if (i-start_index)%5==0:gql=new_client()
+work=[(i,c) for i,c in enumerate(cases) if not results[i]["passed"]] if args.rerun_failed else list(enumerate(cases[start_index:],start_index))
+for work_index,(i,case) in enumerate(work):
+    if work_index%5==0:gql=new_client()
     start=time.monotonic();checks={};r={};before=None
     try:
         r=gql("mutation($id:String!){startRun(ticketId:$id){id}}",{"id":case["ticketId"]})["startRun"]
@@ -85,11 +103,14 @@ for i,case in enumerate(cases[start_index:],start_index):
         passed=all(checks.values())
         if passed and not any(x["scenario"]==r["ticket"]["scenario"] for x in recordings):
             recordings.append({"scenario":r["ticket"]["scenario"],"label":r["ticket"]["subject"],"recordedAt":r["events"][0]["at"],"commit":commit,"providerVerified":True,"run":r,"approvalSnapshot":before if before and before["proposal"] else None})
-        results.append({"id":case["id"],"passed":passed,"checks":checks,"runId":r["id"],"state":r["state"],"model":r["model"],"costMicros":r["usedMicros"],"inputTokens":r["inputTokens"],"outputTokens":r["outputTokens"],"seconds":round(time.monotonic()-start,2)})
-    except Exception as e:results.append({"id":case["id"],"passed":False,"errorType":type(e).__name__,"seconds":round(time.monotonic()-start,2)})
+        row={"id":case["id"],"passed":passed,"checks":checks,"runId":r["id"],"state":r["state"],"model":r["model"],"costMicros":r["usedMicros"],"inputTokens":r["inputTokens"],"outputTokens":r["outputTokens"],"seconds":round(time.monotonic()-start,2)}
+    except Exception as e:row={"id":case["id"],"passed":False,"errorType":type(e).__name__,"seconds":round(time.monotonic()-start,2)}
+    if args.rerun_failed:results[i]=row
+    else:results.append(row)
     report={"provider":"OpenAI","commit":commit,"cases":len(results),"passed":sum(x["passed"]for x in results),"results":results,"recordings":recordings,"notice":"40 executions across seven scenarios, including approval/rejection and stochastic repeats. Not 40 distinct business scenarios."}
+    if retry_notice:report["retryNotice"]=retry_notice
     Path("evals/results/latest.json").write_text(json.dumps(report,indent=2))
-    print(case["id"],"PASS"if results[-1]["passed"]else"FAIL",r.get("state",""),flush=True)
+    print(case["id"],"PASS"if row["passed"]else"FAIL",r.get("state",""),flush=True)
     if r.get("state")=="failed" and r.get("turns")==0:
         print("Provider access failed before a billed call; stopping.",flush=True);break
 cleanup()

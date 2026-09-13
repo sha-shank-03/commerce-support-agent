@@ -2,115 +2,258 @@
   "version": 1,
   "scenario": "address",
   "label": "A last-minute address change",
-  "recordedAt": "2026-09-13T05:13:58Z",
-  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
+  "recordedAt": "2026-09-13T13:23:15.058148953Z",
+  "commit": "e5e1283f355d3f4199997a11a9f4462627192860",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T05:13:58Z",
+        "at": "2026-09-13T13:23:15.058148953Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:13:59Z",
+        "at": "2026-09-13T13:23:16.735838497Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:13:59Z",
+        "at": "2026-09-13T13:23:16.771885867Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:14:00Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:23:17.646177403Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-1",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 4,
-        "title": "audit_mcp"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:14:00Z",
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
+        "at": "2026-09-13T13:23:18.777046487Z",
+        "call": {
+          "costMicros": 319,
+          "durationMs": 1130,
+          "id": "model-1",
+          "inputTokens": 753,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 5,
-        "title": "get_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:14:02Z",
+        "at": "2026-09-13T13:23:19.599876503Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T13:23:19.599878953Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 7,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T13:23:19.625572863Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-2",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 8,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:23:20.458790688Z",
+        "call": {
+          "costMicros": 404,
+          "durationMs": 833,
+          "id": "model-2",
+          "inputTokens": 852,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 39,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 9,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:23:20.478681365Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 10,
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T05:14:02Z",
+        "at": "2026-09-13T13:23:20.478695865Z",
+        "call": null,
         "detail": "Customer requested a last-minute address change before dispatch.",
         "kind": "proposal",
-        "seq": 7,
+        "seq": 11,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T05:14:04Z",
+        "at": "2026-09-13T13:23:20.497961294Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-3",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 12,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:23:21.554096238Z",
+        "call": {
+          "costMicros": 433,
+          "durationMs": 1056,
+          "id": "model-3",
+          "inputTokens": 1038,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 13,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:23:21.584231474Z",
+        "call": null,
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
-        "seq": 8,
+        "seq": 14,
         "title": "awaiting approval"
       },
       {
-        "at": "2026-09-13T05:14:05Z",
+        "at": "2026-09-13T13:23:23.174550996Z",
+        "call": null,
         "detail": "approve",
         "kind": "approval",
-        "seq": 9,
+        "seq": 15,
         "title": "Human decision recorded"
       },
       {
-        "at": "2026-09-13T05:14:05Z",
+        "at": "2026-09-13T13:23:23.174557716Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
-        "seq": 10,
+        "seq": 16,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:14:05Z",
+        "at": "2026-09-13T13:23:24.800106085Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
-        "seq": 11,
+        "seq": 17,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:14:05Z",
+        "at": "2026-09-13T13:23:24.828527224Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
-        "seq": 12,
+        "seq": 18,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:14:05Z",
+        "at": "2026-09-13T13:23:25.687637819Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
-        "seq": 13,
+        "seq": 19,
         "title": "execute_action"
       },
       {
-        "at": "2026-09-13T05:14:05Z",
+        "at": "2026-09-13T13:23:25.687665629Z",
+        "call": null,
         "detail": "Simulated address_change recorded for order-1044. No external action occurred.",
         "kind": "receipt",
-        "seq": 14,
+        "seq": 20,
         "title": "Simulated action recorded"
       },
       {
-        "at": "2026-09-13T05:14:08Z",
-        "detail": "The address for order-1044 was successfully updated to 42 Cedar Lane, Sample City as requested before dispatch.",
+        "at": "2026-09-13T13:23:25.719069854Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-4",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 21,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:23:27.093270686Z",
+        "call": {
+          "costMicros": 554,
+          "durationMs": 1374,
+          "id": "model-4",
+          "inputTokens": 1164,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 55,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 22,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:23:27.136394541Z",
+        "call": null,
+        "detail": "The customer's request for a last-minute address change to 42 Cedar Lane, Sample City has been processed and updated for order-1044 before dispatch.",
         "kind": "status",
-        "seq": 15,
+        "seq": 23,
         "title": "completed"
       }
     ],
@@ -146,8 +289,8 @@
         "version": "v1"
       }
     ],
-    "id": "3e693e028b8375e406c5b7447fcaa0d8e96fbb455cec9923",
-    "inputTokens": 3808,
+    "id": "ea47095aff39f685c35efba22737605e66711134f60849f4",
+    "inputTokens": 3807,
     "model": "gpt-4.1-mini",
     "order": {
       "address": "42 Cedar Lane, Sample City",
@@ -157,24 +300,24 @@
       "totalMinor": 4800,
       "version": 2
     },
-    "outputTokens": 109,
+    "outputTokens": 116,
     "promptVersion": "commerce-v2",
     "proposal": {
       "address": "42 Cedar Lane, Sample City",
       "amountMinor": 0,
-      "digest": "4a062d69536cec3589b1ffbf50d2ededcf34d2d4b32536488880f74d667d9934",
-      "expires": 1789362842,
-      "id": "9b1ece71e61d4c5ace83c37e6688a13427717925a3c8fc4d",
+      "digest": "8f8cf529d27f3e8d86e1fb85070e1c68ef9ac11f2fcd98512503b5faea9a83db",
+      "expires": 1789392200,
+      "id": "b898b95cb9113a15ec9fcac39ef44e097fd15911fb369bb3",
       "kind": "address_change",
       "reason": "Customer requested a last-minute address change before dispatch."
     },
     "receipt": {
       "detail": "Simulated address_change recorded for order-1044. No external action occurred.",
-      "id": "54cfe10427759ecf2c58a66fbc2657a293ff67271cdcf88f",
+      "id": "93617e0f2c2aa42b1fac8f050e83dcc14ef5689981b5deba",
       "simulated": true
     },
     "state": "completed",
-    "summary": "The address for order-1044 was successfully updated to 42 Cedar Lane, Sample City as requested before dispatch.",
+    "summary": "The customer's request for a last-minute address change to 42 Cedar Lane, Sample City has been processed and updated for order-1044 before dispatch.",
     "ticket": {
       "id": "ticket-address",
       "message": "Please update delivery to 42 Cedar Lane, Sample City before dispatch.",
@@ -183,65 +326,169 @@
       "subject": "A last-minute address change"
     },
     "turns": 4,
-    "usedMicros": 1700
+    "usedMicros": 1710
   },
   "approvalSnapshot": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T05:13:58Z",
+        "at": "2026-09-13T13:23:15.058148953Z",
+        "call": null,
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T05:13:59Z",
+        "at": "2026-09-13T13:23:16.735838497Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T05:13:59Z",
+        "at": "2026-09-13T13:23:16.771885867Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T05:14:00Z",
-        "detail": "Validated application tool call",
-        "kind": "tool",
+        "at": "2026-09-13T13:23:17.646177403Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-1",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
         "seq": 4,
-        "title": "audit_mcp"
+        "title": "Model call started"
       },
       {
-        "at": "2026-09-13T05:14:00Z",
-        "detail": "Read-only MCP tool invoked by the agent",
-        "kind": "mcp",
+        "at": "2026-09-13T13:23:18.777046487Z",
+        "call": {
+          "costMicros": 319,
+          "durationMs": 1130,
+          "id": "model-1",
+          "inputTokens": 753,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
         "seq": 5,
-        "title": "get_order"
+        "title": "Model response received"
       },
       {
-        "at": "2026-09-13T05:14:02Z",
+        "at": "2026-09-13T13:23:19.599876503Z",
+        "call": null,
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T13:23:19.599878953Z",
+        "call": null,
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 7,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T13:23:19.625572863Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-2",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 8,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:23:20.458790688Z",
+        "call": {
+          "costMicros": 404,
+          "durationMs": 833,
+          "id": "model-2",
+          "inputTokens": 852,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 39,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 9,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:23:20.478681365Z",
+        "call": null,
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 10,
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T05:14:02Z",
+        "at": "2026-09-13T13:23:20.478695865Z",
+        "call": null,
         "detail": "Customer requested a last-minute address change before dispatch.",
         "kind": "proposal",
-        "seq": 7,
+        "seq": 11,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T05:14:04Z",
+        "at": "2026-09-13T13:23:20.497961294Z",
+        "call": {
+          "costMicros": null,
+          "durationMs": null,
+          "id": "model-3",
+          "inputTokens": null,
+          "model": "gpt-4.1-mini",
+          "outputTokens": null,
+          "phase": "started"
+        },
+        "detail": "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.",
+        "kind": "model",
+        "seq": 12,
+        "title": "Model call started"
+      },
+      {
+        "at": "2026-09-13T13:23:21.554096238Z",
+        "call": {
+          "costMicros": 433,
+          "durationMs": 1056,
+          "id": "model-3",
+          "inputTokens": 1038,
+          "model": "gpt-4.1-mini",
+          "outputTokens": 11,
+          "phase": "completed"
+        },
+        "detail": "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.",
+        "kind": "model",
+        "seq": 13,
+        "title": "Model response received"
+      },
+      {
+        "at": "2026-09-13T13:23:21.584231474Z",
+        "call": null,
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
-        "seq": 8,
+        "seq": 14,
         "title": "awaiting approval"
       }
     ],
@@ -277,8 +524,8 @@
         "version": "v1"
       }
     ],
-    "id": "3e693e028b8375e406c5b7447fcaa0d8e96fbb455cec9923",
-    "inputTokens": 2642,
+    "id": "ea47095aff39f685c35efba22737605e66711134f60849f4",
+    "inputTokens": 2643,
     "model": "gpt-4.1-mini",
     "order": {
       "address": "18 Maple St, Sample City",
@@ -293,9 +540,9 @@
     "proposal": {
       "address": "42 Cedar Lane, Sample City",
       "amountMinor": 0,
-      "digest": "4a062d69536cec3589b1ffbf50d2ededcf34d2d4b32536488880f74d667d9934",
-      "expires": 1789362842,
-      "id": "9b1ece71e61d4c5ace83c37e6688a13427717925a3c8fc4d",
+      "digest": "8f8cf529d27f3e8d86e1fb85070e1c68ef9ac11f2fcd98512503b5faea9a83db",
+      "expires": 1789392200,
+      "id": "b898b95cb9113a15ec9fcac39ef44e097fd15911fb369bb3",
       "kind": "address_change",
       "reason": "Customer requested a last-minute address change before dispatch."
     },
