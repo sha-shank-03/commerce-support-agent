@@ -4,11 +4,28 @@ Independent portfolio demonstration by Shashank. Not affiliated with Sticker Mul
 
 Go owns business rules and authorization; a Python OpenAI agent using GPT-5.6 Luna investigates synthetic customer issues. React/TypeScript presents evidence, approvals and audit receipts. This is a bounded portfolio demonstration, not a real customer-support system.
 
-No real payments, messages or customer accounts are connected. Public release is gated on safety tests and real-provider evaluation. No open-source licence has been granted for original project code.
+No real payments, messages or customer accounts are connected. Source is available for portfolio review; no permissive open-source licence has been granted for original project code.
 
-[Explore the genuine recorded demo](https://commerce-support-agent.vercel.app). Invite-only hosted execution is verified; public replays need no invitation or backend. This repository remains private pending the paired release gates. See [current status](docs/RELEASE_STATUS.md).
+[Explore the genuine recorded demo](https://commerce-support-agent.vercel.app) · [Reviewer brief](https://commerce-support-agent.vercel.app/#brief) · [Architecture](docs/ARCHITECTURE.md) · [Release status](docs/RELEASE_STATUS.md)
+
+Invite-only hosted execution is verified; public replays need no invitation, backend or API key. See the companion [Artwork Proof Agent](https://github.com/sha-shank-03/artwork-proof-agent).
 
 The connected console opens on an interactive system map. Run view exposes synchronized replay, evidence, exact-action approval boundaries and real per-call model telemetry. Reviewer brief provides architecture, actual evaluation history and limitations. The redesigned deployment passed 27 hosted browser checks across Chromium, Firefox and WebKit; see [UI verification](docs/UI_VERIFICATION.md).
+
+## Interface
+
+![Commerce system map showing Go authorization, Python orchestration, GPT-5.6 Luna, PostgreSQL, MCP and browser integrations](docs/screenshots/system-map.png)
+
+The actual deployed console, not a mockup. Select a component to inspect its inputs, outputs and enforced boundary.
+
+<details>
+<summary>Recorded investigation workspace</summary>
+
+![Commerce recorded damaged-delivery case with workflow stages, policy evidence and real model-call events](docs/screenshots/recorded-run.png)
+
+Synthetic recorded run; browsing this view makes no model calls. [Capture details](docs/screenshots/README.md).
+
+</details>
 
 ## What to try
 
@@ -17,7 +34,7 @@ The connected console opens on an interactive system map. Run view exposes synch
 - With an invitation, investigate a damaged order, review the exact refund, approve or reject it, then inspect the simulated receipt.
 - Refresh during approval: the checkpoint is in PostgreSQL, not browser memory.
 
-The live evaluation set passed **40/40** on its recorded source commit. Earlier failures and the corrected grader are retained in [the evaluation report](docs/EVALUATIONS.md). This score is not a claim of production reliability or forty distinct business scenarios.
+The current Luna evaluation set passed **39/40 task cases (97.5%)** and **40/40 action-safety audits**. One browser case stopped safely at validation without proposing or executing an action; it remains a failure in the reported score. Earlier attempts and the corrected grader are retained in [the evaluation report](docs/EVALUATIONS.md). These results are not a claim of production reliability or forty distinct business scenarios.
 
 ## Local setup
 
@@ -62,6 +79,7 @@ Never point `TEST_DATABASE_URL` at a production database: concurrency tests rese
 ## Read next
 
 - [Architecture and API boundaries](docs/ARCHITECTURE.md)
+- [Design note: an approval is not a boolean](docs/DESIGN_NOTE.md)
 - [Threat model and limitations](docs/SECURITY.md)
 - [Operations, cost controls and release checklist](docs/OPERATIONS.md)
 - [Hosted deployment and invitation commands](docs/HOSTING.md)

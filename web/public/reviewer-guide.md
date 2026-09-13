@@ -35,7 +35,11 @@ The React/TypeScript interface and static replays are served by Vercel. The live
 Download verification.json for actual per-case checks, source commit, latency and token usage.
 The current model sets scored 39/40 for Commerce/Luna and 30/30 for Artwork/Claude, with no failed cases retested into a perfect score. All 40 Commerce persisted action-safety audits passed. One Commerce run stopped at application validation with no action; the exact RPC rejection reason was not retained. evaluation-history.json preserves older models and attempts under their original identities. The application ledger remains authoritative for spending reservations.
 These are synthetic bounded evaluations, not production reliability or unrestricted visual-accuracy claims.
-The source repositories remain private pending the separate portfolio release gates.
+Public portfolio source, UI screenshots, setup and test documentation:
+- Commerce: https://github.com/sha-shank-03/commerce-support-agent
+- Artwork: https://github.com/sha-shank-03/artwork-proof-agent
+
+Original code ownership is retained; see each repository's NOTICE.md. These are independent demonstrations, not employer products.
 Infrastructure has a $10/month combined planning target including model allowances, not a guaranteed bill.
 
 ## Useful interview questions
