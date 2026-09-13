@@ -22,7 +22,16 @@ type Store struct {
 var migrationOne string
 
 func New(ctx context.Context, url string) (*Store, error) {
-	p, e := pgxpool.New(ctx, url)
+	config, e := pgxpool.ParseConfig(url)
+	if e != nil {
+		return nil, e
+	}
+	// A zero-minimum pool releases idle connections so Railway can sleep.
+	config.MinConns = 0
+	config.MaxConns = 4
+	config.MaxConnIdleTime = 10 * time.Second
+	config.HealthCheckPeriod = 10 * time.Second
+	p, e := pgxpool.NewWithConfig(ctx, config)
 	if e != nil {
 		return nil, e
 	}
