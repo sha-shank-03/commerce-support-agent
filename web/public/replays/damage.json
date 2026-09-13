@@ -2,127 +2,127 @@
   "version": 1,
   "scenario": "damage",
   "label": "A damaged delivery",
-  "recordedAt": "2026-09-13T04:41:42Z",
-  "commit": "6a5e23f4e4a715d305a9f35cdb01e8eec8c8ad99",
+  "recordedAt": "2026-09-13T05:12:40Z",
+  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T04:41:42Z",
+        "at": "2026-09-13T05:12:40Z",
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T04:41:43Z",
+        "at": "2026-09-13T05:12:40Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T04:41:43Z",
+        "at": "2026-09-13T05:12:41Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T04:41:44Z",
+        "at": "2026-09-13T05:12:42Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 4,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T04:41:44Z",
+        "at": "2026-09-13T05:12:42Z",
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 5,
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T04:41:45Z",
+        "at": "2026-09-13T05:12:44Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T04:41:45Z",
+        "at": "2026-09-13T05:12:44Z",
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 7,
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T04:41:47Z",
+        "at": "2026-09-13T05:12:45Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 8,
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T04:41:47Z",
-        "detail": "Order package arrived damaged with all 50 labels torn, refund requested and damage verified.",
+        "at": "2026-09-13T05:12:45Z",
+        "detail": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval.",
         "kind": "proposal",
         "seq": 9,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:46Z",
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
         "seq": 10,
         "title": "awaiting approval"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:46Z",
         "detail": "approve",
         "kind": "approval",
         "seq": 11,
         "title": "Human decision recorded"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:46Z",
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 12,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:47Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 13,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:47Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 14,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:47Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 15,
         "title": "execute_action"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:47Z",
         "detail": "Simulated refund recorded for order-1043. No external action occurred.",
         "kind": "receipt",
         "seq": 16,
         "title": "Simulated action recorded"
       },
       {
-        "at": "2026-09-13T04:41:50Z",
-        "detail": "The order 'order-1043' was confirmed as damaged with all 50 labels torn, matching the customer complaint. According to the damage policy, a refund was proposed and approved. The refund for the full order amount ($48.00) has been simulated successfully.",
+        "at": "2026-09-13T05:12:49Z",
+        "detail": "The order #order-1043 was confirmed to be damaged with all 50 labels torn, per customer report and order data. A refund for the full paid amount of $48.00 was proposed and approved following the damaged goods policy, which requires human approval for refunds. The refund has been simulated as completed.",
         "kind": "status",
         "seq": 17,
         "title": "completed"
@@ -160,8 +160,8 @@
         "version": "v1"
       }
     ],
-    "id": "f1542b8ed1fb65c03aee49509b152a0c7bf296f74203284e",
-    "inputTokens": 5432,
+    "id": "9df1c50fb5feb4d4cd4c7e81ee796b72761aa34f86b9aa63",
+    "inputTokens": 5439,
     "model": "gpt-4.1-mini",
     "order": {
       "address": "18 Maple St, Sample City",
@@ -171,24 +171,24 @@
       "totalMinor": 4800,
       "version": 2
     },
-    "outputTokens": 157,
+    "outputTokens": 173,
     "promptVersion": "commerce-v2",
     "proposal": {
       "address": "",
       "amountMinor": 4800,
-      "digest": "e23e4bee96e14e4d2682fb8d5af8c16c2ba8200977112b40b08bcadcbcbb5867",
-      "expires": 1789360907,
-      "id": "c175d7f0d869f78ac7f55e6d782aef7c435faab53d9dfc45",
+      "digest": "0bf6506bf400367bba7530a748a903f4d4fc56cc20dd930e4d512d9c8357383a",
+      "expires": 1789362765,
+      "id": "0bea20992fe8bcf2bba94a864dad9042de3f3a7d83913154",
       "kind": "refund",
-      "reason": "Order package arrived damaged with all 50 labels torn, refund requested and damage verified."
+      "reason": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval."
     },
     "receipt": {
       "detail": "Simulated refund recorded for order-1043. No external action occurred.",
-      "id": "3560f7b0a6e2882a3824a1109a54dc5b3f6d5956a5251659",
+      "id": "dba3d402a58f954455754200896b9f8d31939ee8849c4c85",
       "simulated": true
     },
     "state": "completed",
-    "summary": "The order 'order-1043' was confirmed as damaged with all 50 labels torn, matching the customer complaint. According to the damage policy, a refund was proposed and approved. The refund for the full order amount ($48.00) has been simulated successfully.",
+    "summary": "The order #order-1043 was confirmed to be damaged with all 50 labels torn, per customer report and order data. A refund for the full paid amount of $48.00 was proposed and approved following the damaged goods policy, which requires human approval for refunds. The refund has been simulated as completed.",
     "ticket": {
       "id": "ticket-damage",
       "message": "The package arrived damaged and all 50 labels are torn. Please refund the order.",
@@ -197,76 +197,76 @@
       "subject": "A damaged delivery"
     },
     "turns": 5,
-    "usedMicros": 2427
+    "usedMicros": 2455
   },
   "approvalSnapshot": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T04:41:42Z",
+        "at": "2026-09-13T05:12:40Z",
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T04:41:43Z",
+        "at": "2026-09-13T05:12:40Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T04:41:43Z",
+        "at": "2026-09-13T05:12:41Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T04:41:44Z",
+        "at": "2026-09-13T05:12:42Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 4,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T04:41:44Z",
+        "at": "2026-09-13T05:12:42Z",
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 5,
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T04:41:45Z",
+        "at": "2026-09-13T05:12:44Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T04:41:45Z",
+        "at": "2026-09-13T05:12:44Z",
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 7,
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T04:41:47Z",
+        "at": "2026-09-13T05:12:45Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 8,
         "title": "propose_action"
       },
       {
-        "at": "2026-09-13T04:41:47Z",
-        "detail": "Order package arrived damaged with all 50 labels torn, refund requested and damage verified.",
+        "at": "2026-09-13T05:12:45Z",
+        "detail": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval.",
         "kind": "proposal",
         "seq": 9,
         "title": "Resolution proposed"
       },
       {
-        "at": "2026-09-13T04:41:48Z",
+        "at": "2026-09-13T05:12:46Z",
         "detail": "Investigation complete. Review the exact proposed action before it can execute.",
         "kind": "status",
         "seq": 10,
@@ -305,8 +305,8 @@
         "version": "v1"
       }
     ],
-    "id": "f1542b8ed1fb65c03aee49509b152a0c7bf296f74203284e",
-    "inputTokens": 4006,
+    "id": "9df1c50fb5feb4d4cd4c7e81ee796b72761aa34f86b9aa63",
+    "inputTokens": 4014,
     "model": "gpt-4.1-mini",
     "order": {
       "address": "18 Maple St, Sample City",
@@ -316,16 +316,16 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 72,
+    "outputTokens": 79,
     "promptVersion": "commerce-v2",
     "proposal": {
       "address": "",
       "amountMinor": 4800,
-      "digest": "e23e4bee96e14e4d2682fb8d5af8c16c2ba8200977112b40b08bcadcbcbb5867",
-      "expires": 1789360907,
-      "id": "c175d7f0d869f78ac7f55e6d782aef7c435faab53d9dfc45",
+      "digest": "0bf6506bf400367bba7530a748a903f4d4fc56cc20dd930e4d512d9c8357383a",
+      "expires": 1789362765,
+      "id": "0bea20992fe8bcf2bba94a864dad9042de3f3a7d83913154",
       "kind": "refund",
-      "reason": "Order package arrived damaged with all 50 labels torn, refund requested and damage verified."
+      "reason": "Order has confirmed damage with all 50 labels torn; customer requested a refund as per damaged goods policy requiring human approval."
     },
     "receipt": null,
     "state": "awaiting_approval",
@@ -338,6 +338,6 @@
       "subject": "A damaged delivery"
     },
     "turns": 4,
-    "usedMicros": 1720
+    "usedMicros": 1734
   }
 }

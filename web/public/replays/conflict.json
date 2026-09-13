@@ -2,64 +2,64 @@
   "version": 1,
   "scenario": "conflict",
   "label": "Two policies, one careful decision",
-  "recordedAt": "2026-09-13T04:44:06Z",
-  "commit": "6a5e23f4e4a715d305a9f35cdb01e8eec8c8ad99",
+  "recordedAt": "2026-09-13T05:15:12Z",
+  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T04:44:06Z",
+        "at": "2026-09-13T05:15:12Z",
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T04:44:07Z",
+        "at": "2026-09-13T05:15:13Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T04:44:07Z",
+        "at": "2026-09-13T05:15:13Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T04:44:09Z",
+        "at": "2026-09-13T05:15:15Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 4,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T04:44:09Z",
+        "at": "2026-09-13T05:15:15Z",
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 5,
         "title": "get_order"
       },
       {
-        "at": "2026-09-13T04:44:10Z",
+        "at": "2026-09-13T05:15:16Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 6,
         "title": "audit_mcp"
       },
       {
-        "at": "2026-09-13T04:44:10Z",
+        "at": "2026-09-13T05:15:16Z",
         "detail": "Read-only MCP tool invoked by the agent",
         "kind": "mcp",
         "seq": 7,
         "title": "get_policies"
       },
       {
-        "at": "2026-09-13T04:44:11Z",
-        "detail": "The order was shipped and arrived damaged according to the record (evidence order:order-1045). The damaged goods policy allows refund or replacement with human approval (policy:damage:v1). However, a promotion states all sales are final, creating a policy conflict (policy:conflict:v1). In such cases, the conflict policy requires escalation for human review without proposing a refund or replacement until resolution. Therefore, no refund or replacement is proposed now.",
+        "at": "2026-09-13T05:15:17Z",
+        "detail": "The order #order-1045 was damaged and the damage policy allows either a refund or replacement with human approval. However, a final-sale promotion conflicts with this damage policy. According to the conflicting policies rule, such cases must be escalated for human review before any refund or replacement can be proposed.",
         "kind": "status",
         "seq": 8,
         "title": "completed"
@@ -97,7 +97,7 @@
         "version": "v1"
       }
     ],
-    "id": "673b8986b94ee3568563e07e51ae25bd9fe1f2af33d96c10",
+    "id": "d9a7d36bd14b51a37469dc2c8c937c537b2c9fd30c278a46",
     "inputTokens": 2726,
     "model": "gpt-4.1-mini",
     "order": {
@@ -108,12 +108,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 153,
+    "outputTokens": 121,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "completed",
-    "summary": "The order was shipped and arrived damaged according to the record (evidence order:order-1045). The damaged goods policy allows refund or replacement with human approval (policy:damage:v1). However, a promotion states all sales are final, creating a policy conflict (policy:conflict:v1). In such cases, the conflict policy requires escalation for human review without proposing a refund or replacement until resolution. Therefore, no refund or replacement is proposed now.",
+    "summary": "The order #order-1045 was damaged and the damage policy allows either a refund or replacement with human approval. However, a final-sale promotion conflicts with this damage policy. According to the conflicting policies rule, such cases must be escalated for human review before any refund or replacement can be proposed.",
     "ticket": {
       "id": "ticket-conflict",
       "message": "A promotion says all sales final, but my print arrived damaged. Which policy applies?",
@@ -122,7 +122,7 @@
       "subject": "Two policies, one careful decision"
     },
     "turns": 3,
-    "usedMicros": 1337
+    "usedMicros": 1285
   },
   "approvalSnapshot": null
 }

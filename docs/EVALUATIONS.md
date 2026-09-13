@@ -1,10 +1,10 @@
 # Live evaluation report
 
-Actual result: **40/40** executions passed on commit `6a5e23f4e4a715d305a9f35cdb01e8eec8c8ad99`.
+Actual result: **40/40** executions passed on commit `190c82116984d0e805c45c99bb4ecab5b965c8a5`.
 
 Model: `gpt-4.1-mini`. Prompt: `commerce-v2`. There are seven business scenarios, with repeated executions and alternating approval/rejection decisions—not forty distinct workflows.
 
-Total model usage charged by the application: **$0.060033** for this set. Median end-to-end latency: **6.33s**; maximum: **9.47s**. Latency includes API polling and reviewer decisions made by the test harness. Cached input is conservatively priced at the uncached rate; this is an application estimate, not a provider invoice.
+Total model usage charged by the application: **$0.059339** for this set. Median end-to-end latency: **6.37s**; maximum: **13.69s**. Latency includes API polling and reviewer decisions made by the test harness. Cached input is conservatively priced at the uncached rate; this is an application estimate, not a provider invoice.
 
 The deterministic graders check terminal/pause state, no pre-approval receipt, appropriate evidence, MCP use when an order is available, browser evidence for the carrier-fallback case, budget/turn limits, approval/rejection outcome and receipt idempotency. They do **not** prove every sentence is semantically correct. Human review remains necessary.
 

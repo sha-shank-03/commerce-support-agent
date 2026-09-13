@@ -6,6 +6,8 @@ Go owns business rules and authorization; a Python OpenAI agent investigates syn
 
 No real payments, messages or customer accounts are connected. Public release is gated on safety tests and real-provider evaluation. No open-source licence has been granted for original project code.
 
+[Explore the genuine recorded demo](https://commerce-support-agent.vercel.app). Hosted live execution is not enabled yet.
+
 ## What to try
 
 - Replay seven genuine OpenAI investigations without a backend or API key.

@@ -2,36 +2,36 @@
   "version": 1,
   "scenario": "missing",
   "label": "An order we cannot identify",
-  "recordedAt": "2026-09-13T04:43:45Z",
-  "commit": "6a5e23f4e4a715d305a9f35cdb01e8eec8c8ad99",
+  "recordedAt": "2026-09-13T05:14:51Z",
+  "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
   "providerVerified": true,
   "run": {
     "error": "",
     "events": [
       {
-        "at": "2026-09-13T04:43:45Z",
+        "at": "2026-09-13T05:14:51Z",
         "detail": "Bounded investigation of synthetic data.",
         "kind": "status",
         "seq": 1,
         "title": "Agent started"
       },
       {
-        "at": "2026-09-13T04:43:46Z",
+        "at": "2026-09-13T05:14:52Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 2,
         "title": "lookup_order"
       },
       {
-        "at": "2026-09-13T04:43:46Z",
+        "at": "2026-09-13T05:14:52Z",
         "detail": "Validated application tool call",
         "kind": "tool",
         "seq": 3,
         "title": "lookup_policies"
       },
       {
-        "at": "2026-09-13T04:43:48Z",
-        "detail": "To assist you with the order, please provide the order number or any other identifying information related to the order.",
+        "at": "2026-09-13T05:14:53Z",
+        "detail": "Please provide the order ID so that I can assist you with your request.",
         "kind": "status",
         "seq": 4,
         "title": "awaiting input"
@@ -63,7 +63,7 @@
         "version": "v1"
       }
     ],
-    "id": "0973b3d6467b530acaf5f743d8b24c3ef062875e9cf6ca89",
+    "id": "878c0c14eca48ec70736e0ac32858f0133f9df07ec4f2e53",
     "inputTokens": 729,
     "model": "gpt-4.1-mini",
     "order": {
@@ -74,12 +74,12 @@
       "totalMinor": 4800,
       "version": 1
     },
-    "outputTokens": 42,
+    "outputTokens": 35,
     "promptVersion": "commerce-v2",
     "proposal": null,
     "receipt": null,
     "state": "awaiting_input",
-    "summary": "To assist you with the order, please provide the order number or any other identifying information related to the order.",
+    "summary": "Please provide the order ID so that I can assist you with your request.",
     "ticket": {
       "id": "ticket-missing",
       "message": "I need help with an order, but I cannot find the order number.",
@@ -88,7 +88,7 @@
       "subject": "An order we cannot identify"
     },
     "turns": 1,
-    "usedMicros": 359
+    "usedMicros": 348
   },
   "approvalSnapshot": null
 }
