@@ -10,7 +10,9 @@ Set `LIVE_ENABLED=false` and redeploy to disable new live investigations and app
 
 ## Hosting target
 
-Vercel serves the static `web/dist` build. Railway should run one backend and one new portfolio-only PostgreSQL instance shared with the artwork project using **separate databases and distinct least-privilege roles**. Never link to or reuse production databases. Add a Vercel `/api/:path*` rewrite to the new backend only after its URL is verified. Set `ALLOWED_ORIGIN` to the exact public frontend origin and retain secure cookies.
+Vercel serves the static `web/dist` build. The new `agentic-portfolio` Railway project contains this backend, the artwork backend and portfolio-only PostgreSQL, using **separate databases and distinct least-privilege roles**. Database access is private-network-only; administrators use Railway SSH. Cross-database CONNECT privileges were tested and denied. The Vercel `/api/:path*` rewrite is verified. `ALLOWED_ORIGIN` is the exact frontend origin and cookies are Secure/HttpOnly. See [deployment commands](HOSTING.md).
+
+Before hosted live testing, $0.213149 of prior local implementation/evaluation usage was carried into the September 2026 hosted OpenAI ledger. The local live server is stopped. Do not restart independent local live evaluation against a separate ledger without reconciling usage first.
 
 The account check found an existing Railway Pro plan and active Vercel Hobby plan. No plan upgrade is required for static portfolio hosting. The existing Railway allowance is shared with other projects; it is not free incremental capacity. Planning assumptions: approximately 0.15–0.30 GB baseline PostgreSQL memory, mostly sleeping or small idle backends, small storage and low traffic. At published usage rates, staying around $5/month infrastructure may be feasible but must be checked with actual deployed metrics. Combined model allowance adds at most $5/month by application estimates. **$10/month is a target, not a guaranteed bill.** Enable serverless sleeping where supported and do not configure uptime pings. If measured hosting exceeds the target, keep the replay static and live execution local.
 

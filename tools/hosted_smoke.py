@@ -2,7 +2,7 @@
 import argparse, http.cookiejar, json, subprocess, time, urllib.request
 from pathlib import Path
 
-p=argparse.ArgumentParser();p.add_argument("phase",choices=["prepare","complete","inspect"]);p.add_argument("--base-url",required=True);args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument("phase",choices=["prepare","complete","inspect","disabled"]);p.add_argument("--base-url",required=True);args=p.parse_args()
 base=args.base_url.rstrip("/");assert base.startswith("https://")
 root=Path(__file__).resolve().parents[1];report_path=root/".local/hosted-smoke.json"
 report=json.loads(report_path.read_text()) if report_path.exists() else {"baseUrl":base,"checks":{}}
@@ -35,6 +35,12 @@ post("/session",{"token":(root/".local/hosted-invite.txt").read_text().strip()})
 check("secure_httponly_session",all(c.secure and c.has_nonstandard_attr("HttpOnly") for c in jar) and len(jar)>0)
 if args.phase=="inspect":
     print(json.dumps(get(report["browserRunId"]),indent=2));raise SystemExit(0)
+if args.phase=="disabled":
+    with client.open(base+"/api/ready",timeout=30) as response:ready=json.load(response)
+    assert ready["liveEnabled"] is False
+    result=raw_gql('mutation{startRun(ticketId:"ticket-delay"){id}}')
+    check("live_kill_switch",any("disabled" in e["message"].lower() for e in result.get("errors",[])))
+    raise SystemExit(0)
 if args.phase=="prepare":
     run=wait(report.get("browserRunId") or gql('mutation{startRun(ticketId:"ticket-browser"){id}}')["startRun"]["id"])
     report["browserRunId"]=run["id"]

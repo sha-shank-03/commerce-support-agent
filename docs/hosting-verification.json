@@ -1,0 +1,27 @@
+{
+  "baseUrl": "https://commerce-support-agent.vercel.app",
+  "checks": {
+    "secure_httponly_session": true,
+    "hosted_browser_and_mcp": true,
+    "bounded_provider_usage": true,
+    "paused_without_action": true,
+    "wrong_digest_denied": true,
+    "restart_preserved_pending_approval": true,
+    "approved_simulated_receipt": true,
+    "duplicate_approval_idempotent": true,
+    "five_run_invitation_enforced": true,
+    "reviewer_isolation": true,
+    "revoked_session_denied": true,
+    "live_kill_switch": true
+  },
+  "browserRunId": "54b71c284b10ec12cfe4b92cc9ab61e3ecd0570f5a0bd96c",
+  "pausedRunId": "9f579a94ea75f60449ce8df29a184c31243a4bb6b2292cda",
+  "verifiedDate": "2026-09-13",
+  "browserChecks": {
+    "chromiumLiveApproval": true,
+    "firefoxLiveApproval": true,
+    "webkitLiveApproval": true,
+    "publicReplayApiBlocked": true,
+    "mobileAndKeyboard": true
+  }
+}

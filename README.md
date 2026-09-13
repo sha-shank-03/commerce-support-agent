@@ -6,7 +6,7 @@ Go owns business rules and authorization; a Python OpenAI agent investigates syn
 
 No real payments, messages or customer accounts are connected. Public release is gated on safety tests and real-provider evaluation. No open-source licence has been granted for original project code.
 
-[Explore the genuine recorded demo](https://commerce-support-agent.vercel.app). Hosted live execution is not enabled yet.
+[Explore the genuine recorded demo](https://commerce-support-agent.vercel.app). Invite-only hosted execution is verified; public replays need no invitation or backend. This repository remains private pending the paired release gates. See [current status](docs/RELEASE_STATUS.md).
 
 ## What to try
 
@@ -42,7 +42,7 @@ npm run dev
 
 Open **http://localhost:5173** (not the 127.0.0.1 spelling: Origin checks are exact). The invitation is in ignored `.local/invite.txt`. Do not paste it into public issues or commit it. Alternatively, use `docker compose up --build`; it creates a dedicated local database volume and binds the API to loopback. Live execution defaults off. The container recipe must pass CI before deployment is claimed verified.
 
-To view replays only, `cd web && npm ci && npm run dev` needs no backend, database or credentials. The static Vercel configuration contains no backend rewrite until a reviewed Railway deployment is configured.
+To view replays only, `cd web && npm ci && npm run dev` needs no backend, database or credentials. The Vercel `/api` rewrite points to the isolated Railway backend, but replay mode never requests it.
 
 ## Verification
 
@@ -62,5 +62,6 @@ Never point `TEST_DATABASE_URL` at a production database: concurrency tests rese
 - [Architecture and API boundaries](docs/ARCHITECTURE.md)
 - [Threat model and limitations](docs/SECURITY.md)
 - [Operations, cost controls and release checklist](docs/OPERATIONS.md)
+- [Hosted deployment and invitation commands](docs/HOSTING.md)
 - [Walkthrough and interview questions](docs/INTERVIEW.md)
 - [Ownership and dependency notices](NOTICE.md)
