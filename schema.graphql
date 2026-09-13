@@ -13,6 +13,16 @@ type Evidence {
   version: String
 }
 
+type ModelCall {
+  costMicros: Float
+  durationMs: Float
+  id: String
+  inputTokens: Int
+  model: String
+  outputTokens: Int
+  phase: String
+}
+
 type Mutation {
   approveRun(digest: String, id: String!, text: String): Run
   cancelRun(digest: String, id: String!, text: String): Run
@@ -73,6 +83,7 @@ type Run {
 
 type RunEvent {
   at: String
+  call: ModelCall
   detail: String
   kind: String
   seq: Int

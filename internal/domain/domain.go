@@ -38,11 +38,24 @@ type Evidence struct {
 	Version string `json:"version"`
 }
 type Event struct {
-	Seq    int    `json:"seq"`
-	Kind   string `json:"kind"`
-	Title  string `json:"title"`
-	Detail string `json:"detail"`
-	At     string `json:"at"`
+	Seq    int        `json:"seq"`
+	Kind   string     `json:"kind"`
+	Title  string     `json:"title"`
+	Detail string     `json:"detail"`
+	At     string     `json:"at"`
+	Call   *ModelCall `json:"call,omitempty"`
+}
+
+// ModelCall contains only public, application-owned observability metadata.
+// It deliberately has no prompt, response body, tool arguments or credentials.
+type ModelCall struct {
+	ID           string `json:"id"`
+	Phase        string `json:"phase"`
+	Model        string `json:"model"`
+	DurationMs   *int64 `json:"durationMs,omitempty"`
+	InputTokens  *int   `json:"inputTokens,omitempty"`
+	OutputTokens *int   `json:"outputTokens,omitempty"`
+	CostMicros   *int64 `json:"costMicros,omitempty"`
 }
 type Proposal struct {
 	ID           string `json:"id"`
@@ -124,7 +137,30 @@ func ID() string {
 }
 func Hash(s string) string { x := sha256.Sum256([]byte(s)); return hex.EncodeToString(x[:]) }
 func (r *Run) Event(kind, title, detail string) {
-	r.Events = append(r.Events, Event{len(r.Events) + 1, kind, title, detail, time.Now().UTC().Format(time.RFC3339)})
+	r.Events = append(r.Events, Event{Seq: len(r.Events) + 1, Kind: kind, Title: title, Detail: detail, At: time.Now().UTC().Format(time.RFC3339Nano)})
+}
+func (r *Run) ModelStarted() {
+	r.Event("model", "Model call started", "OpenAI request after a successful spending reservation. Tools and outputs remain subject to application validation.")
+	r.Events[len(r.Events)-1].Call = &ModelCall{ID: fmt.Sprintf("model-%d", r.Turns), Phase: "started", Model: r.Model}
+}
+func (r *Run) ModelCompleted(input, output int, cost int64) {
+	id := fmt.Sprintf("model-%d", r.Turns)
+	var elapsed *int64
+	for i := len(r.Events) - 1; i >= 0; i-- {
+		e := r.Events[i]
+		if e.Call != nil && e.Call.ID == id && e.Call.Phase == "started" {
+			if start, err := time.Parse(time.RFC3339Nano, e.At); err == nil {
+				ms := time.Since(start).Milliseconds()
+				if ms < 0 {
+					ms = 0
+				}
+				elapsed = &ms
+			}
+			break
+		}
+	}
+	r.Event("model", "Model response received", "Observed request interval includes worker communication. Usage is provider-reported; cost is an application estimate. No hidden reasoning is displayed.")
+	r.Events[len(r.Events)-1].Call = &ModelCall{ID: id, Phase: "completed", Model: r.Model, DurationMs: elapsed, InputTokens: &input, OutputTokens: &output, CostMicros: &cost}
 }
 func Fixtures() []Ticket {
 	return []Ticket{

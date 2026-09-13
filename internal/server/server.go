@@ -410,14 +410,16 @@ func (s *Server) execute(id, lease string) {
 					return e
 				}
 				r.Turns++
+				r.ModelStarted()
 				result = true
 			case "usage":
-				if m.Micros < 0 || m.Micros > r.ReservedMicros {
+				if m.Micros < 0 || m.Micros > r.ReservedMicros || m.Input < 0 || m.Output < 0 {
 					return errors.New("usage exceeded reservation")
 				}
 				domain.Settle(st, r, m.Micros)
 				r.InputTokens += m.Input
 				r.OutputTokens += m.Output
+				r.ModelCompleted(m.Input, m.Output, m.Micros)
 				result = true
 			case "tool":
 				var e error
@@ -566,7 +568,8 @@ func (s *Server) Schema() graphql.Schema {
 	ticket := object("Ticket", map[string]graphql.Output{"id": str, "subject": str, "message": str, "orderId": str, "scenario": str})
 	order := object("Order", map[string]graphql.Output{"id": str, "status": str, "version": integer, "totalMinor": integer, "currency": str, "address": str, "damaged": graphql.Boolean})
 	evidence := object("Evidence", map[string]graphql.Output{"id": str, "title": str, "content": str, "version": str})
-	event := object("RunEvent", map[string]graphql.Output{"seq": integer, "kind": str, "title": str, "detail": str, "at": str})
+	modelCall := object("ModelCall", map[string]graphql.Output{"id": str, "phase": str, "model": str, "durationMs": graphql.Float, "inputTokens": integer, "outputTokens": integer, "costMicros": graphql.Float})
+	event := object("RunEvent", map[string]graphql.Output{"seq": integer, "kind": str, "title": str, "detail": str, "at": str, "call": modelCall})
 	proposal := object("ProposedAction", map[string]graphql.Output{"id": str, "kind": str, "orderId": str, "orderVersion": integer, "amountMinor": integer, "address": str, "reason": str, "digest": str, "expires": graphql.Float})
 	receipt := object("ActionReceipt", map[string]graphql.Output{"id": str, "kind": str, "detail": str, "at": str, "simulated": graphql.Boolean})
 	run := object("Run", map[string]graphql.Output{"id": str, "ticket": ticket, "order": order, "state": str, "summary": str, "evidence": graphql.NewList(evidence), "events": graphql.NewList(event), "proposal": proposal, "receipt": receipt, "model": str, "promptVersion": str, "created": graphql.Float, "turns": integer, "inputTokens": integer, "outputTokens": integer, "usedMicros": integer, "error": str})
