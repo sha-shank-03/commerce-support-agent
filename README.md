@@ -8,6 +8,8 @@ No real payments, messages or customer accounts are connected. Public release is
 
 [Explore the genuine recorded demo](https://commerce-support-agent.vercel.app). Invite-only hosted execution is verified; public replays need no invitation or backend. This repository remains private pending the paired release gates. See [current status](docs/RELEASE_STATUS.md).
 
+The connected console opens on an interactive system map. Run view exposes synchronized replay, evidence, exact-action approval boundaries and real per-call model telemetry. Reviewer brief provides architecture, actual evaluation history and limitations. The redesigned deployment passed 27 hosted browser checks across Chromium, Firefox and WebKit; see [UI verification](docs/UI_VERIFICATION.md).
+
 ## What to try
 
 - Replay seven genuine OpenAI investigations without a backend or API key.

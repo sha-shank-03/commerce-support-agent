@@ -51,4 +51,6 @@ Plan recorded; implementation and verification in progress. Results will be appe
 
 All forty persisted Commerce outcomes passed the exact-action audit. Seven genuine recordings include MCP and restricted-browser execution.
 
-Frontend production deployment and hosted UI verification are the remaining steps.
+## UI rollout complete
+
+The redesigned frontend is deployed on the existing public URL. All 27 applicable hosted browser checks passed, including real provider execution, refresh, approval and rendered call metadata. Public replay tests passed with API access blocked. See [the verification report](UI_VERIFICATION.md) for deployment IDs, exact source commits, failures, limitations and evidence. Repository publication is still a separate gate.
