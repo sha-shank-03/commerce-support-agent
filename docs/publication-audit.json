@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-13T15:21:02.756Z",
+  "scope": "Current working files, complete local Git blob history, current build assets and every completed available GitHub Actions run at audit time. Generic credential signatures and exact approved provider/Railway secrets were checked without printing them. No automated scan proves absence of every possible secret.",
+  "workingHistoryBuildObjects": 327,
+  "credentialMatches": 0,
+  "ci": [
+    {
+      "id": 34764974074,
+      "conclusion": "success",
+      "commit": "334c4708d7dc6a39059ede35359f0cabe82e43d6",
+      "bytes": 466832,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34763360421,
+      "conclusion": "success",
+      "commit": "dac03ce5bd12994980d76f1e1c6702d982601988",
+      "bytes": 466380,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34760379230,
+      "conclusion": "success",
+      "commit": "e456b685c250091142f1c88afa9c009646f93c02",
+      "bytes": 467531,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34741995678,
+      "conclusion": "success",
+      "commit": "7386db7c52f57697aaeb1bc1b9d04f2fd4c7ade6",
+      "bytes": 467995,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34741594703,
+      "conclusion": "success",
+      "commit": "859832e78325a904a40f6a684bc89ea06cc26ada",
+      "bytes": 347940,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34740999748,
+      "conclusion": "success",
+      "commit": "ccf2c809660b63cdbe8807ebf17f6eca25c026fa",
+      "bytes": 347223,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34740780524,
+      "conclusion": "success",
+      "commit": "01d91da82dcc03fe39141a9b1b426563cf99f8aa",
+      "bytes": 349452,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34740259363,
+      "conclusion": "success",
+      "commit": "ca0354170f3c57a933446eaccda4637ed02a4c3f",
+      "bytes": 347108,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34739963056,
+      "conclusion": "success",
+      "commit": "95dfd6a8ffc5eddd159d3028dcc4c995352fdf42",
+      "bytes": 346979,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34739631047,
+      "conclusion": "success",
+      "commit": "190c82116984d0e805c45c99bb4ecab5b965c8a5",
+      "bytes": 348058,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34739525577,
+      "conclusion": "success",
+      "commit": "5e1ebc258f81c1cce65b268b6cd66ea83fb06b2d",
+      "bytes": 468594,
+      "credentialMatches": 0
+    },
+    {
+      "id": 34739389130,
+      "conclusion": "failure",
+      "commit": "7f96254d7c7d986e33aef0660a8c1bfd6ba3ea4a",
+      "bytes": 74218,
+      "credentialMatches": 0
+    }
+  ]
+}
