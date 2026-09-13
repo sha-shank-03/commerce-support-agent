@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: commerce
+      POSTGRES_DB: commerce
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+    volumes: [commerce-data:/var/lib/postgresql/data]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U commerce"]
+      interval: 5s
+      retries: 10
+  api:
+    build: .
+    ports: ["127.0.0.1:8080:8080"]
+    environment:
+      DATABASE_URL: postgresql://commerce:${POSTGRES_PASSWORD:-local-development-only}@db:5432/commerce
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LIVE_ENABLED: ${LIVE_ENABLED:-false}
+      ALLOWED_ORIGIN: http://localhost:5173
+    depends_on:
+      db: {condition: service_healthy}
+volumes:
+  commerce-data:

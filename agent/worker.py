@@ -36,6 +36,9 @@ def rpc(kind: str, **data):
 def tool(name: str, **args):
     return rpc("tool", name=name, args=args)
 
+def carrier_destination_allowed(url: str, method: str, fixture_url: str) -> bool:
+    return method == "GET" and url == fixture_url
+
 class Resolution(BaseModel):
     state: Literal["completed", "awaiting_input"]
     summary: str
@@ -85,7 +88,7 @@ async def browser_shipment() -> str:
             browser = await p.chromium.launch(headless=True)
             page = await browser.new_page()
             async def restrict(route):
-                if route.request.url == url and route.request.method == "GET":
+                if carrier_destination_allowed(route.request.url, route.request.method, url):
                     await route.continue_()
                 else:
                     await route.abort()

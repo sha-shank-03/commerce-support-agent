@@ -1,0 +1,18 @@
+fragment RunDetails on Run {
+  id state summary error model promptVersion turns usedMicros inputTokens outputTokens
+  ticket { id subject message orderId scenario }
+  order { id status totalMinor currency address version }
+  events { seq kind title detail at }
+  evidence { id title content version }
+  proposal { id kind digest amountMinor address reason expires }
+  receipt { id detail simulated }
+}
+query Tickets { tickets { id subject message orderId scenario } }
+query GetRun($id:String!) { run(id:$id) { ...RunDetails } }
+query GetRuns { runs { ...RunDetails } }
+mutation StartRun($id:String!) { startRun(ticketId:$id) { ...RunDetails } }
+mutation Approve($id:String!, $text:String!, $digest:String!) { approveRun(id:$id,text:$text,digest:$digest) { ...RunDetails } }
+mutation Reject($id:String!, $text:String!, $digest:String!) { rejectRun(id:$id,text:$text,digest:$digest) { ...RunDetails } }
+mutation Clarify($id:String!, $text:String!, $digest:String!) { clarifyRun(id:$id,text:$text,digest:$digest) { ...RunDetails } }
+mutation Cancel($id:String!, $text:String!, $digest:String!) { cancelRun(id:$id,text:$text,digest:$digest) { ...RunDetails } }
+mutation Resume($id:String!, $text:String!, $digest:String!) { resumeRun(id:$id,text:$text,digest:$digest) { ...RunDetails } }

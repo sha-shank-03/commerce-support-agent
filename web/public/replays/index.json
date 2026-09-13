@@ -1,5 +1,34 @@
 {
   "version": 1,
-  "runs": [],
-  "notice": "No verified live replay has been published yet."
+  "runs": [
+    {
+      "label": "A shipment taking the scenic route",
+      "file": "/replays/delay.json"
+    },
+    {
+      "label": "A damaged delivery",
+      "file": "/replays/damage.json"
+    },
+    {
+      "label": "A last-minute address change",
+      "file": "/replays/address.json"
+    },
+    {
+      "label": "An order we cannot identify",
+      "file": "/replays/missing.json"
+    },
+    {
+      "label": "Two policies, one careful decision",
+      "file": "/replays/conflict.json"
+    },
+    {
+      "label": "Carrier portal fallback",
+      "file": "/replays/browser.json"
+    },
+    {
+      "label": "Untrusted instructions in a ticket",
+      "file": "/replays/injection.json"
+    }
+  ],
+  "notice": "Recorded real OpenAI executions, never live. No model or backend calls while browsing."
 }

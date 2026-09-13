@@ -193,6 +193,15 @@ func ValidateAction(r *Run, p *Proposal, now int64) error {
 	return nil
 }
 func Propose(r *Run, kind, address, reason string, now int64) (*Proposal, error) {
+	if r.Decision != "" || r.Receipt != nil {
+		return nil, errors.New("decision is final; create a new investigation")
+	}
+	if r.Proposal != nil {
+		return nil, errors.New("a proposal is already pending review")
+	}
+	if len(reason) > 1500 {
+		return nil, errors.New("proposal explanation too long")
+	}
 	amount := 0
 	if kind == "refund" {
 		amount = r.Order.TotalMinor - r.Order.RefundMinor

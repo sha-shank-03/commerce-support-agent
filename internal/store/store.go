@@ -2,10 +2,12 @@ package store
 
 import (
 	"context"
+	_ "embed"
 	"encoding/json"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/sha-shank-03/commerce-support-agent/internal/domain"
 	"sync"
+	"time"
 )
 
 // A single locked aggregate is intentional for the low-volume portfolio demo.
@@ -16,16 +18,35 @@ type Store struct {
 	memory *domain.State
 }
 
+//go:embed migrations/001_init.sql
+var migrationOne string
+
 func New(ctx context.Context, url string) (*Store, error) {
 	p, e := pgxpool.New(ctx, url)
 	if e != nil {
 		return nil, e
 	}
 	s := &Store{pool: p}
-	_, e = p.Exec(ctx, `CREATE TABLE IF NOT EXISTS portfolio_state(id integer PRIMARY KEY CHECK(id=1), version bigint NOT NULL DEFAULT 0, data jsonb NOT NULL); INSERT INTO portfolio_state(id,data) VALUES(1,'{"invites":{},"sessions":{},"runs":{},"budgets":{}}') ON CONFLICT DO NOTHING`)
+	_, e = p.Exec(ctx, migrationOne)
 	return s, e
 }
 func Memory() *Store { return &Store{memory: domain.NewState()} }
+func prune(st *domain.State) {
+	now := time.Now().Unix()
+	for k, v := range st.Sessions {
+		if v.Expires <= now {
+			delete(st.Sessions, k)
+		}
+	}
+	for k, v := range st.Runs {
+		if v.Created > 0 && v.Created+7*86400 <= now {
+			if v.ReservedMicros > 0 {
+				domain.Settle(st, v, v.ReservedMicros)
+			}
+			delete(st.Runs, k)
+		}
+	}
+}
 func (s *Store) Do(ctx context.Context, f func(*domain.State) error) error {
 	if s.pool == nil {
 		s.mu.Lock()
@@ -33,6 +54,7 @@ func (s *Store) Do(ctx context.Context, f func(*domain.State) error) error {
 		raw, _ := json.Marshal(s.memory)
 		next := domain.NewState()
 		json.Unmarshal(raw, next)
+		prune(next)
 		if err := f(next); err != nil {
 			return err
 		}
@@ -52,6 +74,7 @@ func (s *Store) Do(ctx context.Context, f func(*domain.State) error) error {
 	if e = json.Unmarshal(raw, next); e != nil {
 		return e
 	}
+	prune(next)
 	if e = f(next); e != nil {
 		return e
 	}

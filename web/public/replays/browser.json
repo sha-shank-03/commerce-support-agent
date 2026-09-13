@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "scenario": "browser",
+  "label": "Carrier portal fallback",
+  "recordedAt": "2026-09-13T04:44:34Z",
+  "commit": "6a5e23f4e4a715d305a9f35cdb01e8eec8c8ad99",
+  "providerVerified": true,
+  "run": {
+    "error": "",
+    "events": [
+      {
+        "at": "2026-09-13T04:44:34Z",
+        "detail": "Bounded investigation of synthetic data.",
+        "kind": "status",
+        "seq": 1,
+        "title": "Agent started"
+      },
+      {
+        "at": "2026-09-13T04:44:34Z",
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 2,
+        "title": "lookup_order"
+      },
+      {
+        "at": "2026-09-13T04:44:34Z",
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 3,
+        "title": "lookup_policies"
+      },
+      {
+        "at": "2026-09-13T04:44:36Z",
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 4,
+        "title": "audit_mcp"
+      },
+      {
+        "at": "2026-09-13T04:44:36Z",
+        "detail": "Read-only MCP tool invoked by the agent",
+        "kind": "mcp",
+        "seq": 5,
+        "title": "get_order"
+      },
+      {
+        "at": "2026-09-13T04:44:38Z",
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 6,
+        "title": "browser_fixture"
+      },
+      {
+        "at": "2026-09-13T04:44:38Z",
+        "detail": "Validated application tool call",
+        "kind": "tool",
+        "seq": 7,
+        "title": "browser_result"
+      },
+      {
+        "at": "2026-09-13T04:44:40Z",
+        "detail": "The shipment for order-1046 is currently in transit at the Sample City sorting centre, as verified via the carrier portal fallback due to the shipment API being unavailable.",
+        "kind": "status",
+        "seq": 8,
+        "title": "completed"
+      }
+    ],
+    "evidence": [
+      {
+        "content": "{\"id\":\"order-1046\",\"status\":\"shipped\",\"version\":1,\"totalMinor\":4800,\"currency\":\"USD\",\"address\":\"18 Maple St, Sample City\",\"damaged\":false,\"refundMinor\":0,\"replaced\":false}",
+        "id": "order:order-1046",
+        "title": "Order record",
+        "version": "1"
+      },
+      {
+        "content": "Verified damaged orders may receive one refund up to the remaining paid amount OR one replacement. Never both. Human approval is mandatory.",
+        "id": "policy:damage:v1",
+        "title": "Damaged goods",
+        "version": "v1"
+      },
+      {
+        "content": "Delivery address may change only while the order is processing. A reviewer must approve the exact new address.",
+        "id": "policy:address:v1",
+        "title": "Address changes",
+        "version": "v1"
+      },
+      {
+        "content": "A delay alone does not authorize a refund. Report the known shipment status. Escalate uncertainty, never invent delivery dates.",
+        "id": "policy:delay:v1",
+        "title": "Delivery delays",
+        "version": "v1"
+      },
+      {
+        "content": "When the final-sale promotion conflicts with damage policy, escalate for human review. Do not propose a refund until conflict is resolved.",
+        "id": "policy:conflict:v1",
+        "title": "Conflicting policies",
+        "version": "v1"
+      },
+      {
+        "content": "In transit at Sample City sorting centre",
+        "id": "browser:order-1046",
+        "title": "Browser carrier lookup",
+        "version": "fixture-v1"
+      }
+    ],
+    "id": "17c5ad6b3f7ac61657f4f39542498e344d4a1937d7d5a8f1",
+    "inputTokens": 2516,
+    "model": "gpt-4.1-mini",
+    "order": {
+      "address": "18 Maple St, Sample City",
+      "currency": "USD",
+      "id": "order-1046",
+      "status": "shipped",
+      "totalMinor": 4800,
+      "version": 1
+    },
+    "outputTokens": 88,
+    "promptVersion": "commerce-v2",
+    "proposal": null,
+    "receipt": null,
+    "state": "completed",
+    "summary": "The shipment for order-1046 is currently in transit at the Sample City sorting centre, as verified via the carrier portal fallback due to the shipment API being unavailable.",
+    "ticket": {
+      "id": "ticket-browser",
+      "message": "The shipment API is unavailable. Please use the carrier portal to check my delivery.",
+      "orderId": "order-1046",
+      "scenario": "browser",
+      "subject": "Carrier portal fallback"
+    },
+    "turns": 3,
+    "usedMicros": 1148
+  },
+  "approvalSnapshot": null
+}

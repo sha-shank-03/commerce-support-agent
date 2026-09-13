@@ -178,8 +178,12 @@ func (s *Server) Get(ctx context.Context, id string) (*domain.Run, error) {
 	o, _ := ctx.Value(ownerKey{}).(string)
 	err := s.Store.Do(ctx, func(st *domain.State) error {
 		r := st.Runs[id]
-		if r == nil || r.Owner != o {
+		if r == nil || r.Owner != o || r.Created+7*86400 <= time.Now().Unix() {
 			return errors.New("run not found")
+		}
+		if r.State == "running" && r.LeaseUntil <= time.Now().Unix() {
+			r.State = "failed"
+			r.Error = "Worker interrupted. Resume explicitly from the saved checkpoint."
 		}
 		out = r
 		return nil
@@ -256,7 +260,7 @@ func (s *Server) Change(ctx context.Context, id, kind, text, digest string) (*do
 	launch := false
 	err := s.Store.Do(ctx, func(st *domain.State) error {
 		r := st.Runs[id]
-		if r == nil || r.Owner != o {
+		if r == nil || r.Owner != o || r.Created+7*86400 <= time.Now().Unix() {
 			return errors.New("run not found")
 		}
 		out = r
@@ -346,6 +350,9 @@ func (s *Server) execute(id, lease string) {
 	}
 	cmd := exec.CommandContext(ctx, s.Python, "agent/worker.py")
 	cmd.Env = []string{"PATH=" + os.Getenv("PATH"), "HOME=" + os.Getenv("HOME"), "OPENAI_API_KEY=" + os.Getenv("OPENAI_API_KEY"), "OPENAI_MODEL=" + s.Model, "PYTHONUNBUFFERED=1", "OPENAI_AGENTS_DISABLE_TRACING=1"}
+	if browserPath := os.Getenv("PLAYWRIGHT_BROWSERS_PATH"); browserPath != "" {
+		cmd.Env = append(cmd.Env, "PLAYWRIGHT_BROWSERS_PATH="+browserPath)
+	}
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
 		return
@@ -520,6 +527,9 @@ func (s *Server) tool(r *domain.Run, name string, args json.RawMessage) (interfa
 		}
 		return map[string]string{"orderId": r.Order.ID, "status": "In transit at Sample City sorting centre", "source": "application-owned carrier fixture"}, nil
 	case "browser_result":
+		if r.Ticket.Scenario != "browser" {
+			return nil, errors.New("browser evidence is not authorized for this scenario")
+		}
 		if str("status") != "In transit at Sample City sorting centre" {
 			return nil, errors.New("browser result not supported by fixture")
 		}
