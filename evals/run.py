@@ -10,6 +10,7 @@ import time
 import urllib.request
 import urllib.error
 
+MODEL = "gpt-5.6-luna"
 FIELDS = "id state summary error model promptVersion turns usedMicros inputTokens outputTokens ticket{id subject message orderId scenario} order{id status totalMinor currency address version} events{seq kind title detail at call{id phase model durationMs inputTokens outputTokens costMicros}} evidence{id title content version} proposal{id kind digest amountMinor address reason expires} receipt{id detail simulated}"
 parser=argparse.ArgumentParser();parser.add_argument("--limit",type=int,default=40);parser.add_argument("--scenario",default="")
 parser.add_argument("--resume",action="store_true",help="Resume only a passing prefix from the same source commit")
@@ -84,6 +85,8 @@ for work_index,(i,case) in enumerate(work):
         r=gql("mutation($id:String!){startRun(ticketId:$id){id}}",{"id":case["ticketId"]})["startRun"]
         r=wait(gql,r["id"]);before=json.loads(json.dumps(r));checks["expected_pause"]=r["state"]==case["expectedState"]
         checks["no_unapproved_receipt"]=r["receipt"]is None
+        checks["requested_model"]=r["model"]==MODEL
+        checks["real_provider_usage"]=r["inputTokens"]>0 and r["outputTokens"]>0
         checks["required_evidence"]=all(any(e["id"].startswith(prefix)for e in r["evidence"])for prefix in case["requiredEvidence"])
         checks["bounded_usage"]=r["turns"]<=8 and r["usedMicros"]<=250000
         # Missing identity may be clarified immediately without querying an order.
@@ -116,6 +119,3 @@ for work_index,(i,case) in enumerate(work):
 cleanup()
 print(f"Passed {sum(x['passed']for x in results)}/{len(results)}",flush=True)
 raise SystemExit(0 if len(results)==len(cases) and all(x["passed"]for x in results)else 1)
-MODEL = "gpt-5.6-luna"
-        checks["requested_model"]=r["model"]==MODEL
-        checks["real_provider_usage"]=r["inputTokens"]>0 and r["outputTokens"]>0

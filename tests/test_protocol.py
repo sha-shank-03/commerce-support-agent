@@ -48,3 +48,9 @@ def test_luna_cost_and_checkpoint_binding():
         worker.validate_model({'model': 'gpt-4.1-mini'}, worker.MODEL)
     with pytest.raises(ValueError):
         worker.cost_micros(-1, 0)
+
+def test_evaluation_entrypoints_parse_without_running_provider():
+    import ast
+    root = Path(__file__).resolve().parents[1]
+    for path in (root/'evals/run.py', root/'tools/replay_assets.py'):
+        ast.parse(path.read_text())
