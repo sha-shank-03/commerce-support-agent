@@ -8,8 +8,9 @@ import time
 import urllib.request
 
 FIELDS = "id state summary error model promptVersion turns usedMicros inputTokens outputTokens ticket{id subject message orderId scenario} order{id status totalMinor currency address version} events{seq kind title detail at} evidence{id title content version} proposal{id kind digest amountMinor address reason expires} receipt{id detail simulated}"
-parser=argparse.ArgumentParser();parser.add_argument("--limit",type=int,default=40);args=parser.parse_args()
-cases=[json.loads(l) for l in Path("evals/cases.jsonl").read_text().splitlines()][:args.limit]
+parser=argparse.ArgumentParser();parser.add_argument("--limit",type=int,default=40);parser.add_argument("--scenario",default="");args=parser.parse_args()
+cases=[json.loads(l) for l in Path("evals/cases.jsonl").read_text().splitlines()]
+cases=[c for c in cases if not args.scenario or c["id"].startswith(args.scenario)][:args.limit]
 results=[];recordings=[];Path("evals/results").mkdir(parents=True,exist_ok=True)
 commit=subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()
 def new_client():
@@ -62,4 +63,3 @@ for i,case in enumerate(cases):
     print(case["id"],"PASS"if results[-1]["passed"]else"FAIL",r.get("state",""),flush=True)
 print(f"Passed {sum(x['passed']for x in results)}/{len(results)}",flush=True)
 raise SystemExit(0 if all(x["passed"]for x in results)else 1)
-

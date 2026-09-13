@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"os"
 	"os/exec"
@@ -85,7 +86,10 @@ func (s *Server) exchange(w http.ResponseWriter, r *http.Request) {
 	// Bound failed token attempts per service; the strong random token is the primary defence.
 	s.mu.Lock()
 	now := time.Now().Unix()
-	key := r.RemoteAddr
+	key, _, splitErr := net.SplitHostPort(r.RemoteAddr)
+	if splitErr != nil {
+		key = r.RemoteAddr
+	}
 	var recent []int64
 	for _, t := range s.authAttempts[key] {
 		if t > now-60 {
@@ -317,18 +321,19 @@ func (s *Server) Change(ctx context.Context, id, kind, text, digest string) (*do
 }
 
 type wire struct {
-	Version    int             `json:"v"`
-	Type       string          `json:"type"`
-	ID         string          `json:"id"`
-	Name       string          `json:"name"`
-	Args       json.RawMessage `json:"args"`
-	Checkpoint string          `json:"checkpoint"`
-	State      string          `json:"state"`
-	Summary    string          `json:"summary"`
-	Input      int             `json:"inputTokens"`
-	Output     int             `json:"outputTokens"`
-	Micros     int64           `json:"micros"`
-	Error      string          `json:"error"`
+	Version     int             `json:"v"`
+	Type        string          `json:"type"`
+	ID          string          `json:"id"`
+	Name        string          `json:"name"`
+	Args        json.RawMessage `json:"args"`
+	Checkpoint  string          `json:"checkpoint"`
+	State       string          `json:"state"`
+	Summary     string          `json:"summary"`
+	Input       int             `json:"inputTokens"`
+	Output      int             `json:"outputTokens"`
+	Micros      int64           `json:"micros"`
+	Error       string          `json:"error"`
+	EvidenceIDs []string        `json:"evidenceIds"`
 }
 
 func (s *Server) execute(id, lease string) {
@@ -376,6 +381,7 @@ func (s *Server) execute(id, lease string) {
 	scan := bufio.NewScanner(stdout)
 	scan.Buffer(make([]byte, 4096), 2*1024*1024)
 	done := false
+	errorCode := "interrupted"
 	for scan.Scan() {
 		var m wire
 		if json.Unmarshal(scan.Bytes(), &m) != nil || m.Version != 1 {
@@ -416,6 +422,17 @@ func (s *Server) execute(id, lease string) {
 				r.Checkpoint = m.Checkpoint
 				result = true
 			case "done":
+				for _, citation := range m.EvidenceIDs {
+					found := false
+					for _, evidence := range r.Evidence {
+						if evidence.ID == citation {
+							found = true
+						}
+					}
+					if !found {
+						return errors.New("citation was not retrieved")
+					}
+				}
 				if m.State != "completed" && m.State != "awaiting_approval" && m.State != "awaiting_input" {
 					return errors.New("invalid final state")
 				}
@@ -445,6 +462,9 @@ func (s *Server) execute(id, lease string) {
 			break
 		}
 		if m.Type == "error" || done {
+			if m.Type == "error" && len(m.Error) < 160 {
+				errorCode = m.Error
+			}
 			break
 		}
 	}
@@ -456,7 +476,7 @@ func (s *Server) execute(id, lease string) {
 	if !done {
 		_ = waitErr
 		_ = err
-		finish("Agent interrupted or failed. Recover explicitly; no action is replayed automatically.")
+		finish("Agent stopped (" + errorCode + "). Recover explicitly; no action is replayed automatically.")
 	}
 }
 func (s *Server) tool(r *domain.Run, name string, args json.RawMessage) (interface{}, error) {

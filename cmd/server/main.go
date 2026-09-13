@@ -72,10 +72,11 @@ func main() {
 			if r == nil {
 				return fmt.Errorf("run not found")
 			}
-			r.Checkpoint = ""
-			r.Owner = ""
-			r.LeaseToken = ""
-			return json.NewEncoder(os.Stdout).Encode(r)
+			public := *r
+			public.Checkpoint = ""
+			public.Owner = ""
+			public.LeaseToken = ""
+			return json.NewEncoder(os.Stdout).Encode(public)
 		})
 		if e != nil {
 			log.Fatal("export failed")
