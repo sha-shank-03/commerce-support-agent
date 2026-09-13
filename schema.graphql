@@ -1,6 +1,52 @@
+type ActionReceipt {
+  at: String
+  detail: String
+  id: String
+  kind: String
+  simulated: Boolean
+}
+
+type Evidence {
+  content: String
+  id: String
+  title: String
+  version: String
+}
+
+type Mutation {
+  approveRun(digest: String, id: String!, text: String): Run
+  cancelRun(digest: String, id: String!, text: String): Run
+  clarifyRun(digest: String, id: String!, text: String): Run
+  rejectRun(digest: String, id: String!, text: String): Run
+  resumeRun(digest: String, id: String!, text: String): Run
+  startRun(ticketId: String!): Run
+}
+
+type Order {
+  address: String
+  currency: String
+  damaged: Boolean
+  id: String
+  status: String
+  totalMinor: Int
+  version: Int
+}
+
+type ProposedAction {
+  address: String
+  amountMinor: Int
+  digest: String
+  expires: Float
+  id: String
+  kind: String
+  orderId: String
+  orderVersion: Int
+  reason: String
+}
+
 type Query {
   run(id: String!): Run
-  runEvents(id: String!, after: Int): [RunEvent]
+  runEvents(after: Int, id: String!): [RunEvent]
   runs: [Run]
   tickets: [Ticket]
 }
@@ -25,14 +71,6 @@ type Run {
   usedMicros: Int
 }
 
-type ActionReceipt {
-  at: String
-  detail: String
-  id: String
-  kind: String
-  simulated: Boolean
-}
-
 type RunEvent {
   at: String
   detail: String
@@ -41,48 +79,10 @@ type RunEvent {
   title: String
 }
 
-type Mutation {
-  approveRun(id: String!, text: String, digest: String): Run
-  cancelRun(digest: String, id: String!, text: String): Run
-  clarifyRun(digest: String, id: String!, text: String): Run
-  rejectRun(id: String!, text: String, digest: String): Run
-  resumeRun(id: String!, text: String, digest: String): Run
-  startRun(ticketId: String!): Run
-}
-
-type Order {
-  address: String
-  currency: String
-  damaged: Boolean
-  id: String
-  status: String
-  totalMinor: Int
-  version: Int
-}
-
-type Evidence {
-  content: String
-  id: String
-  title: String
-  version: String
-}
-
 type Ticket {
   id: String
   message: String
   orderId: String
   scenario: String
   subject: String
-}
-
-type ProposedAction {
-  address: String
-  amountMinor: Int
-  digest: String
-  expires: Float
-  id: String
-  kind: String
-  orderId: String
-  orderVersion: Int
-  reason: String
 }

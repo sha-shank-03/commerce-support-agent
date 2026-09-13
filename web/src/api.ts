@@ -81,7 +81,9 @@ export async function request(path: string, body?: unknown) {
   return data;
 }
 const sdk = getSdk(
-  new GraphQLClient(new URL("/api/graphql", window.location.origin).href, { credentials: "same-origin" }),
+  new GraphQLClient(new URL("/api/graphql", window.location.origin).href, {
+    credentials: "same-origin",
+  }),
 );
 export async function tickets() {
   return z.array(ticketSchema).parse((await sdk.Tickets()).tickets);

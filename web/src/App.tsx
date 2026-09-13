@@ -26,6 +26,8 @@ import {
   type Run,
   type Ticket,
 } from "./api";
+const liveAvailable =
+  import.meta.env.DEV || import.meta.env.VITE_LIVE_AVAILABLE === "true";
 
 export default function App() {
   const [mode, setMode] = useState<"replay" | "live">("replay"),
@@ -49,28 +51,49 @@ export default function App() {
   const current = mode === "replay" ? replays[selected]?.run : run;
   const replay = mode === "replay" ? replays[selected] : null;
   useEffect(() => {
-    if (mode !== "live") return;
+    if (mode !== "live" || !liveAvailable) return;
     let active = true;
-    Promise.all([tickets(), getRuns()]).then(([items, history]) => {
-      if (!active) return;
-      setTickets(items); setAuthenticated(true);
-      setRun(history.sort((a,b)=>b.events[0]?.at.localeCompare(a.events[0]?.at||'')||0)[0]||null);
-    }).catch(() => { if (active) setAuthenticated(false); });
-    return () => { active = false; };
+    Promise.all([tickets(), getRuns()])
+      .then(([items, history]) => {
+        if (!active) return;
+        setTickets(items);
+        setAuthenticated(true);
+        setRun(
+          history.sort(
+            (a, b) => b.events[0]?.at.localeCompare(a.events[0]?.at || "") || 0,
+          )[0] || null,
+        );
+      })
+      .catch(() => {
+        if (active) setAuthenticated(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [mode]);
   useEffect(() => {
     if (mode !== "live" || run?.state !== "running") return;
-    let active = true, pending = false;
+    let active = true,
+      pending = false;
     const timer = window.setInterval(() => {
       if (document.visibilityState === "visible" && !pending) {
         pending = true;
         getRun(run.id)
-          .then(value => { if (active) setRun(value); })
-          .catch((e) => { if (active) setError(e.message); })
-          .finally(() => { pending = false; });
+          .then((value) => {
+            if (active) setRun(value);
+          })
+          .catch((e) => {
+            if (active) setError(e.message);
+          })
+          .finally(() => {
+            pending = false;
+          });
       }
     }, 1500);
-    return () => { active = false; clearInterval(timer); };
+    return () => {
+      active = false;
+      clearInterval(timer);
+    };
   }, [mode, run?.id, run?.state]);
   async function action(fn: () => Promise<void>) {
     setBusy(true);
@@ -173,7 +196,20 @@ export default function App() {
           {error}
         </div>
       )}
-      {mode === "live" && !authenticated ? (
+      {mode === "live" && !liveAvailable ? (
+        <section className="panel login">
+          <LockKeyhole size={25} />
+          <h2>Live hosting is not enabled yet.</h2>
+          <p>
+            The recorded investigations are genuine and fully interactive.
+            Hosted live execution is pending release checks; the local invited
+            workflow has been verified.
+          </p>
+          <button onClick={() => setMode("replay")}>
+            Explore recorded runs
+          </button>
+        </section>
+      ) : mode === "live" && !authenticated ? (
         <form
           className="panel login"
           onSubmit={(e) => {
