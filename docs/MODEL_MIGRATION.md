@@ -49,4 +49,15 @@ No provider credential, budget or hosting allocation was changed for Commerce.
 Railway deployment: `0d174695-b074-46fe-96fe-315d9aa32de6` (backend `7068172`).
 Evaluation source: `2b9fc8b3747aa184bb0c9b86e3fb3fbc7a8c667f` (harness fix only).
 Vercel production deployment: `dpl_CfteC2t8uLyEERBnUq3W3b4ybmcy`.
-Hosted browser/CI checks are recorded in the final handoff below when complete.
+Hosted browser checks: **27/27 passed**, including genuine Luna refund execution
+after approval and refresh in Chromium, Firefox and WebKit. The public system
+map was also inspected directly with no browser errors. All 11 checked static
+assets matched locally reviewed bytes. Temporary evaluation/browser invitations
+were revoked; existing reviewer invitation files were preserved.
+
+Frontend/replay source: `dac03ce5bd12994980d76f1e1c6702d982601988`.
+[Linux CI](https://github.com/sha-shank-03/commerce-support-agent/actions/runs/34763360421)
+passed, including PostgreSQL, schema/browser, dependency, secret and Docker checks.
+Railway build/runtime logs, Vercel build logs and complete CI logs have zero
+credential matches. See model-log-audit.json and RELEASE_STATUS.md. Subsequent
+handoff commits are documentation-only and do not change the verified runtime.

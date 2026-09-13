@@ -1,0 +1,30 @@
+[
+  {
+    "app": "commerce-support-agent",
+    "source": "--build",
+    "exitCode": 0,
+    "bytes": 22787,
+    "credentialMatches": 0
+  },
+  {
+    "app": "commerce-support-agent",
+    "source": "--deployment",
+    "exitCode": 0,
+    "bytes": 531,
+    "credentialMatches": 0
+  },
+  {
+    "app": "commerce-support-agent",
+    "source": "vercel-build",
+    "exitCode": 0,
+    "bytes": 3699,
+    "credentialMatches": 0
+  },
+  {
+    "app": "commerce-support-agent",
+    "source": "complete-ci",
+    "exitCode": 0,
+    "bytes": 466380,
+    "credentialMatches": 0
+  }
+]
