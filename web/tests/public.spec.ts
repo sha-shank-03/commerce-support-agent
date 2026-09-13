@@ -24,7 +24,7 @@ test('mobile replay fits and invite entry is keyboard accessible',async({page})=
   await expect(page.getByRole('button',{name:/CASE 01/})).toBeVisible();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   const live=page.getByRole('tab',{name:'Invited live access'});await live.focus();await page.keyboard.press('Enter');
-  if(process.env.BASE_URL){await expect(page.getByRole('heading',{name:'Live hosting is not enabled yet.'})).toBeVisible();return;}
+  if(process.env.EXPECT_LIVE_DISABLED==='true'){await expect(page.getByRole('heading',{name:'Live hosting is not enabled yet.'})).toBeVisible();return;}
   await expect(page.getByLabel('Invitation token')).toBeVisible();
   await page.getByLabel('Invitation token').fill('deliberately-invalid-demo-token');
   await expect(page.getByLabel('Invitation token')).toHaveAttribute('type','password');
