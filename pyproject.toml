@@ -1,0 +1,7 @@
+[project]
+name = "commerce-support-agent"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["openai-agents>=0.3", "mcp>=1.12", "playwright>=1.55", "pydantic>=2.11", "python-dotenv>=1.1"]
+[dependency-groups]
+dev = ["pytest>=8.4", "pytest-asyncio>=1.0", "pip-audit>=2.9"]

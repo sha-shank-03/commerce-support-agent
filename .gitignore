@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.venv/
+node_modules/
+dist/
+.vercel/
+__pycache__/
+.pytest_cache/
+*.pyc
+.local/
+test-results/
+playwright-report/
+evals/results/
+!evals/results/.gitkeep
+bin/
+coverage*
