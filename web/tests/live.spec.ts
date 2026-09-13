@@ -5,8 +5,8 @@ import {readFileSync} from 'node:fs';
 test('invited live refund survives refresh and executes only after approval',async({page})=>{
  test.skip(process.env.LIVE_BROWSER_TEST!=='true','Explicit provider-spending opt-in required');
  test.setTimeout(120000);
- execFileSync('bin/server',['-invite'],{cwd:'..',stdio:'ignore'});
- const invitation=readFileSync('../.local/invite.txt','utf8').trim();
+ if(!process.env.HOSTED_INVITATION_FILE) execFileSync('bin/server',['-invite'],{cwd:'..',stdio:'ignore'});
+ const invitation=readFileSync(process.env.HOSTED_INVITATION_FILE || '../.local/invite.txt','utf8').trim();
  await page.goto('/');await page.getByRole('tab',{name:'Invited live access'}).click();
  await page.getByLabel('Invitation token').fill(invitation);
  await page.getByRole('button',{name:'Open live workspace'}).click();
