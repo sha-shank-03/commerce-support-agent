@@ -30,14 +30,14 @@ retry_notice=None
 if args.resume and args.rerun_failed:parser.error("Choose resume or rerun-failed, not both")
 if args.rerun_failed:
     saved=json.loads(previous.read_text())
-    if saved.get("provider")!="OpenAI" or saved.get("commit")!=commit or [r.get("id") for r in saved["results"]]!=[c["id"] for c in cases]:
+    if saved.get("provider")!="OpenAI" or saved.get("model")!=MODEL or saved.get("commit")!=commit or [r.get("id") for r in saved["results"]]!=[c["id"] for c in cases]:
         raise SystemExit("Rerun requires the complete same-source evaluation set")
     results=saved["results"];recordings=saved["recordings"]
     retry_notice={"priorPassed":saved["passed"],"priorCases":saved["cases"],"rerunCaseIds":[r["id"] for r in results if not r["passed"]],"method":"Only failed cases rerun; original attempt retained in evaluation history."}
     previous.rename(previous.with_name(f"attempt-{time.time_ns()}.json"))
 elif args.resume:
     saved=json.loads(previous.read_text());results=saved["results"];recordings=saved["recordings"]
-    if saved.get("provider")!="OpenAI" or saved.get("commit")!=commit or not all(r["passed"] for r in results) or [r["id"] for r in results]!=[c["id"] for c in cases[:len(results)]]:
+    if saved.get("provider")!="OpenAI" or saved.get("model")!=MODEL or saved.get("commit")!=commit or not all(r["passed"] for r in results) or [r["id"] for r in results]!=[c["id"] for c in cases[:len(results)]]:
         raise SystemExit("Resume requires a passing prefix from the same provider and source commit")
 elif previous.exists():previous.rename(previous.with_name(f"attempt-{time.time_ns()}.json"))
 def cleanup():
@@ -107,7 +107,7 @@ for work_index,(i,case) in enumerate(work):
     except Exception as e:row={"id":case["id"],"passed":False,"errorType":type(e).__name__,"seconds":round(time.monotonic()-start,2)}
     if args.rerun_failed:results[i]=row
     else:results.append(row)
-    report={"provider":"OpenAI","commit":commit,"cases":len(results),"passed":sum(x["passed"]for x in results),"results":results,"recordings":recordings,"notice":"40 executions across seven scenarios, including approval/rejection and stochastic repeats. Not 40 distinct business scenarios."}
+    report={"provider":"OpenAI","model":MODEL,"commit":commit,"cases":len(results),"passed":sum(x["passed"]for x in results),"results":results,"recordings":recordings,"notice":"40 executions across seven scenarios, including approval/rejection and stochastic repeats. Not 40 distinct business scenarios."}
     if retry_notice:report["retryNotice"]=retry_notice
     Path("evals/results/latest.json").write_text(json.dumps(report,indent=2))
     print(case["id"],"PASS"if row["passed"]else"FAIL",r.get("state",""),flush=True)
@@ -116,3 +116,6 @@ for work_index,(i,case) in enumerate(work):
 cleanup()
 print(f"Passed {sum(x['passed']for x in results)}/{len(results)}",flush=True)
 raise SystemExit(0 if len(results)==len(cases) and all(x["passed"]for x in results)else 1)
+MODEL = "gpt-5.6-luna"
+        checks["requested_model"]=r["model"]==MODEL
+        checks["real_provider_usage"]=r["inputTokens"]>0 and r["outputTokens"]>0

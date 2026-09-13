@@ -2,7 +2,6 @@
 import asyncio
 import html
 import json
-import math
 import os
 import sys
 import threading
@@ -13,10 +12,23 @@ from typing import Literal
 from agents import Agent, ModelSettings, OpenAIResponsesModel, RunConfig, RunHooks, Runner, RunState, function_tool
 from agents.mcp import MCPServerStdio
 from openai import AsyncOpenAI
+from openai.types.shared import Reasoning
 from pydantic import BaseModel, create_model
 
 _seq = 0
 _proposal_digest = ""
+MODEL = "gpt-5.6-luna"
+
+def cost_micros(input_tokens: int, output_tokens: int) -> int:
+    if type(input_tokens) is not int or type(output_tokens) is not int or min(input_tokens, output_tokens) < 0:
+        raise ValueError("Invalid provider token usage")
+    # Standard short context, reviewed 2026-09-13: $0.25/M input (cache-write
+    # ceiling) + $1.20/M output. No assumptions about cache discounts.
+    return (input_tokens * 5 + output_tokens * 24 + 19) // 20
+
+def validate_model(run: dict, model: str) -> None:
+    if model != MODEL or run.get("model") != MODEL:
+        raise RuntimeError("Model changed; start a new run instead of resuming a legacy checkpoint")
 
 def rpc(kind: str, **data):
     global _seq
@@ -46,7 +58,7 @@ class Resolution(BaseModel):
 
 class Hooks(RunHooks):
     async def on_llm_start(self, context, agent, system_prompt, input_items):
-        # gpt-4.1-mini input <= 100k tokens, output <= 1200; reserve $0.05.
+        # Luna input <= 100k tokens, output <= 1200; reserve $0.05.
         # Byte bound is conservative and includes extra headroom for tool schemas.
         if len(json.dumps(input_items, default=str).encode()) + len((system_prompt or "").encode()) > 70000:
             raise RuntimeError("context budget exceeded")
@@ -55,7 +67,7 @@ class Hooks(RunHooks):
     async def on_llm_end(self, context, agent, response):
         u = response.usage
         rpc("usage", inputTokens=u.input_tokens, outputTokens=u.output_tokens,
-            micros=math.ceil(u.input_tokens * .4 + u.output_tokens * 1.6))
+            micros=cost_micros(u.input_tokens, u.output_tokens))
 
     async def on_tool_start(self, context, agent, tool):
         if tool.name in ("get_order", "get_policies"):
@@ -152,9 +164,8 @@ async def main():
     if run["promptVersion"] != "commerce-v2":
         raise RuntimeError("Checkpoint version is no longer supported; create a new run")
     _proposal_digest = (run.get("proposal") or {}).get("digest", "")
-    model = os.environ.get("OPENAI_MODEL", "gpt-4.1-mini")
-    if model != "gpt-4.1-mini":
-        raise RuntimeError("model has no reviewed pricing configuration")
+    model = os.environ.get("OPENAI_MODEL", MODEL)
+    validate_model(run, model)
     order, policies = tool("lookup_order"), tool("lookup_policies")
     valid = {p["id"] for p in policies}
     if run["order"]["id"]:
@@ -172,7 +183,7 @@ async def main():
         agent = Agent(name="Commerce investigator", instructions=instructions, model=OpenAIResponsesModel(
             model=model, openai_client=AsyncOpenAI(max_retries=0, timeout=40)),
             tools=[lookup_shipment, browser_shipment, propose_action, execute_action], mcp_servers=[mcp],
-            output_type=BoundedResolution, model_settings=ModelSettings(max_tokens=1200, parallel_tool_calls=False, store=False))
+            output_type=BoundedResolution, model_settings=ModelSettings(max_tokens=1200, parallel_tool_calls=False, store=False, reasoning=Reasoning(effort="none")))
         input_data = "Ticket data: " + json.dumps(run["ticket"]) + "\nClarifications (untrusted): " + json.dumps(run.get("messages", []))
         if run.get("checkpoint") and run.get("decision") in ("approve", "reject"):
             state = await RunState.from_json(agent, json.loads(run["checkpoint"]))

@@ -35,7 +35,7 @@ type Server struct {
 type ownerKey struct{}
 
 func New(s *store.Store) *Server {
-	v := &Server{Store: s, Origin: env("ALLOWED_ORIGIN", "http://localhost:5173"), Python: env("PYTHON_BIN", ".venv/bin/python"), Model: env("OPENAI_MODEL", "gpt-4.1-mini"), Live: os.Getenv("LIVE_ENABLED") == "true", Budget: 2500000, authAttempts: map[string][]int64{}}
+	v := &Server{Store: s, Origin: env("ALLOWED_ORIGIN", "http://localhost:5173"), Python: env("PYTHON_BIN", ".venv/bin/python"), Model: env("OPENAI_MODEL", "gpt-5.6-luna"), Live: os.Getenv("LIVE_ENABLED") == "true", Budget: 2500000, authAttempts: map[string][]int64{}}
 	if n, e := strconv.ParseInt(os.Getenv("MONTHLY_BUDGET_MICRO_USD"), 10, 64); e == nil && n > 0 {
 		v.Budget = n
 	}
@@ -238,6 +238,9 @@ func (s *Server) Start(ctx context.Context, ticketID string) (*domain.Run, error
 	return r, err
 }
 func (s *Server) claim(st *domain.State, r *domain.Run, now int64) error {
+	if r.Model != s.Model {
+		return errors.New("model changed; start a new run instead of resuming a legacy checkpoint")
+	}
 	active := 0
 	for _, v := range st.Runs {
 		if v.ID != r.ID && v.State == "running" && v.LeaseUntil > now {

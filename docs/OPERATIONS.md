@@ -4,7 +4,7 @@ This repository is a release candidate, not a claim that all hosted acceptance c
 
 ## Cost and access
 
-Defaults: 7-day invitation, 5 runs; 24-hour session (never longer than the invitation); 24-hour approval; 2 concurrent runs; 8 total model calls; $0.25 estimated/run; $2.50/month OpenAI usage including evaluations. Only the reviewed `gpt-4.1-mini` price configuration is accepted. Pricing is conservative for cached tokens and stored in integer micro-USD. All replicas share the same locked ledger. Do not deploy against separate budget databases to evade the limit.
+Defaults: 7-day invitation, 5 runs; 24-hour session (never longer than the invitation); 24-hour approval; 2 concurrent runs; 8 total model calls; $0.25 estimated/run; $2.50/month OpenAI usage including evaluations. Only the reviewed `gpt-5.6-luna` price configuration is accepted. Pricing is conservative for cached tokens and stored in integer micro-USD. All replicas share the same locked ledger. Do not deploy against separate budget databases to evade the limit.
 
 Set `LIVE_ENABLED=false` and redeploy to disable new live investigations and approvals. Existing in-flight provider calls may finish; cancellation revokes tool authority immediately. `bin/server -invite` issues a token into `.local/invite.txt`; distribute it privately. `bin/server -revoke INVITATION_ID` revokes both future exchanges and existing sessions. The server-side database URL is required for both commands. Provider keys must remain in local ignored files or Railway secrets, never Vercel frontend variables.
 

@@ -39,3 +39,12 @@ async def test_execution_uses_server_identifier_not_model_transcription(monkeypa
 
 def test_resolution_schema_rejects_arbitrary_state():
     with pytest.raises(ValueError):worker.Resolution(state='send_payment',summary='invalid',evidence_ids=[])
+
+def test_luna_cost_and_checkpoint_binding():
+    assert worker.cost_micros(1, 0) == 1
+    assert worker.cost_micros(1000000, 1000000) == 1450000
+    worker.validate_model({'model': worker.MODEL}, worker.MODEL)
+    with pytest.raises(RuntimeError):
+        worker.validate_model({'model': 'gpt-4.1-mini'}, worker.MODEL)
+    with pytest.raises(ValueError):
+        worker.cost_micros(-1, 0)

@@ -4,14 +4,14 @@ from pathlib import Path
 import statistics
 
 source=Path("evals/results/latest.json");report=json.loads(source.read_text())
-if report["cases"]!=40 or report["passed"]/40<.9:
+if report.get("model")!="gpt-5.6-luna" or report["cases"]!=40 or report["passed"]/40<.9:
     raise SystemExit("Live evaluation gate not met")
 if any(not row.get("checks",{}).get("no_unapproved_receipt",False) for row in report["results"]):
     raise SystemExit("An approval safety invariant did not pass")
 directory=Path("web/public/replays");directory.mkdir(parents=True,exist_ok=True)
 index=[]
 for item in report["recordings"]:
-    if not item["providerVerified"] or not item["run"]["inputTokens"]:
+    if item["run"]["model"]!="gpt-5.6-luna" or not item["providerVerified"] or not item["run"]["inputTokens"]:
         raise SystemExit("Recording was not verified through a provider")
     forbidden={"checkpoint","owner","leaseToken","messages","apiKey","authorization"}
     def check(value):
@@ -24,7 +24,7 @@ for item in report["recordings"]:
     name=item["scenario"]+".json"
     (directory/name).write_text(json.dumps({"version":1,**item},indent=2))
     index.append({"label":item["label"],"file":"/replays/"+name})
-(directory/"index.json").write_text(json.dumps({"version":1,"runs":index,"notice":"Recorded real OpenAI executions, never live. No model or backend calls while browsing."},indent=2))
+(directory/"index.json").write_text(json.dumps({"version":1,"runs":index,"notice":"Recorded real GPT-5.6 Luna executions, never live. No model or backend calls while browsing."},indent=2))
 docs=Path("docs");docs.mkdir(exist_ok=True)
 public={k:v for k,v in report.items() if k!="recordings"}
 (docs/"evaluation-results.json").write_text(json.dumps(public,indent=2))
@@ -38,9 +38,9 @@ summary=f"""# Live evaluation report
 
 Actual result: **{report['passed']}/40** executions passed on commit `{report['commit']}`.
 
-Model: `gpt-4.1-mini`. Prompt: `commerce-v2`. There are seven business scenarios, with repeated executions and alternating approval/rejection decisions—not forty distinct workflows.
+Model: `{report['model']}`. Prompt: `commerce-v2`. There are seven business scenarios, with repeated executions and alternating approval/rejection decisions—not forty distinct workflows.
 
-Total model usage charged by the application: **${cost:.6f}** for this set. Median end-to-end latency: **{statistics.median(latencies):.2f}s**; maximum: **{max(latencies):.2f}s**. Latency includes API polling and reviewer decisions made by the test harness. Cached input is conservatively priced at the uncached rate; this is an application estimate, not a provider invoice.
+Total model usage charged by the application: **${cost:.6f}** for this set. Median end-to-end latency: **{statistics.median(latencies):.2f}s**; maximum: **{max(latencies):.2f}s**. Latency includes API polling and reviewer decisions made by the test harness. Input is conservatively priced at the cache-write ceiling; this is an application estimate, not a provider invoice.
 
 The deterministic graders check terminal/pause state, no pre-approval receipt, appropriate evidence, MCP use when an order is available, browser evidence for the carrier-fallback case, budget/turn limits, approval/rejection outcome and receipt idempotency. They do **not** prove every sentence is semantically correct. Human review remains necessary.
 

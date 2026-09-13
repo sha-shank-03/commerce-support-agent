@@ -51,7 +51,7 @@ test("invited live refund survives refresh and executes only after approval", as
   await expect(
     modelEvent.getByText("Observed duration", { exact: true }),
   ).toBeVisible();
-  await expect(modelEvent).toContainText("gpt-4.1-mini");
+  await expect(modelEvent).toContainText("gpt-5.6-luna");
   await page.screenshot({
     path: `../.local/console-live-${test.info().project.name}.png`,
     fullPage: true,
